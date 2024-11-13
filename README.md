@@ -46,9 +46,9 @@ The code styles can be found in `.editorconfig`. This is taken from the .NET run
 If anybody feels like the styles enforced should be changed then this can be discussed during a meeting.
 You can also automatically format your code by using `dotnet format`. And if you'd like to check manually if anything needs testing you can use `dotnet format --verify-no-changes`.
 
-## Backend.UnitTests
+## Unit testing
 
-The tests can be run using `dotnet test`.
+The tests can be run using `dotnet test` in the Backend.UnitTests project.
 
 The `Systems/` directory contains each layer we would like to test which is in this case:
 - Controllers
@@ -64,6 +64,20 @@ Systems/
 - Services/
   - TestItemsService.cs
 ```
+
+The `Helpers/` directory contains classes that contain repetitive things. Such as creating an in-memory database to test.
+```
+Helpers/
+- InMemoryDbFactory.cs
+- MockServiceFactory.cs
+```
+
+## Integration testing
+
+The tests can be run using `dotnet test` in the Backend.IntegrationTests project.
+
+Each controller's endpoints should have integration tests, both happy (80 minimum) and unhappy (20 minimum) flows. Unlike the unittests the API will have to be running for this.
+And should be automated in the CI/CD pipeline.
 
 ## Workflows
 
