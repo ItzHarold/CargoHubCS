@@ -31,6 +31,6 @@ public static class Program
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        
+
     }
 }
