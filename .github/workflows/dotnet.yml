@@ -15,10 +15,10 @@ jobs:
         with:
           dotnet-version: 8.0.x
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore .\CargoHub.sln
       - name: Format
-        run: dotnet format
+        run: dotnet format .\CargoHub.sln
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore .\CargoHub.sln
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal .\CargoHub.sln
