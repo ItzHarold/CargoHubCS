@@ -28,4 +28,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: TestResults
-          path: ./TestResults/**/coverage.cobertura.xml
+          path: ./TestResults
+      - name: Publish Code Coverage
+        # Only works when there are tests. Will initially fail when used in the base template.
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./TestResults/**/coverage.cobertura.xml
+          fail_ci_if_error: true
