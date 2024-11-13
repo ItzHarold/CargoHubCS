@@ -18,10 +18,10 @@ jobs:
       - name: List files
         run: ls -R
       - name: Restore dependencies
-        run: dotnet restore .\CargoHub.sln
+        run: dotnet restore 
       - name: Format
-        run: dotnet format .\CargoHub.sln
+        run: dotnet format 
       - name: Build
-        run: dotnet build --no-restore .\CargoHub.sln
+        run: dotnet build --no-restore 
       - name: Test
-        run: dotnet test --no-build --verbosity normal .\CargoHub.sln
+        run: dotnet test --no-build --verbosity normal 
