@@ -16,10 +16,21 @@ jobs:
         with:
           dotnet-version: 8.0.x
       - name: Restore dependencies
-        run: dotnet restore 
+        run: dotnet restore
       - name: Format
-        run: dotnet format 
+        run: dotnet format
       - name: Build
-        run: dotnet build --no-restore 
+        run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal 
+        run: dotnet test --no-build --collect:"XPlat Code Coverage" --results-directory ./TestResults
+      - name: Publish Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: ./TestResults
+      - name: Publish Code Coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./TestResults/**/coverage.cobertura.xml
+          fail_ci_if_error: true
