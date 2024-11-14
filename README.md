@@ -44,7 +44,7 @@ In the solution you will find various properties such as:
 Their intention should be clear but these are here to force in the direction of good and consistent code.
 The code styles can be found in `.editorconfig`. This is taken from the .NET runtime as a template.
 If anybody feels like the styles enforced should be changed then this can be discussed during a meeting.
-You can also automatically format your code by using `dotnet format`. And if you'd like to check manually if anything needs testing you can use `dotnet format --verify-no-changes`.
+You can also automatically format your code by using `dotnet format`. And if you'd like to check manually if anything needs formatting you can use `dotnet format --verify-no-changes`.
 
 ## Unit testing
 
