@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.Warehouses
 {
     [Table("Warehouses")]
-    public class Warehouse
+    public class Warehouse : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -34,10 +34,5 @@ namespace Backend.Features.Warehouses
         [Required]
         [ForeignKey("Contact")]
         public required int ContactId { get; set; }
-
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }

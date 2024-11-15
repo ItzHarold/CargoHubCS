@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.Clients
 {
     [Table("Clients")]
-    public class Client
+    public class Client : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public required int Id { get; set; }
 
         [Required]
-        public required string Name { get; set; }
+        public required string Name { get; init; }
 
         [Required]
-        public required string Address { get; set; }
+        public required string Address { get; init; }
 
         [Required]
         public required string City { get; set; }
@@ -37,10 +37,5 @@ namespace Backend.Features.Clients
         [Required]
         [EmailAddress]
         public required string ContactEmail { get; set; }
-
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }

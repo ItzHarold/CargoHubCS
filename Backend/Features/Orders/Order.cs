@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.Orders
 {
     [Table("Orders")]
-    public class Order
+    public class Order : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -57,10 +57,5 @@ namespace Backend.Features.Orders
         public decimal? TotalTax { get; set; }
 
         public decimal? TotalSurcharge { get; set; }
-
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }

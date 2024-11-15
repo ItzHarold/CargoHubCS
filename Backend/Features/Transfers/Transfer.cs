@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.Transfers
 {
     [Table("Transfers")]
-    public class Transfer
+    public class Transfer : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,10 +22,5 @@ namespace Backend.Features.Transfers
 
         [Required]
         public required string TransferStatus { get; set; }
-
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.ItemLines
 {
     [Table("Item_Lines")]
-    public class ItemLine
+    public class ItemLine : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,10 +14,5 @@ namespace Backend.Features.ItemLines
         public required string Name { get; set; }
 
         public string? Description { get; set; }
-
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }

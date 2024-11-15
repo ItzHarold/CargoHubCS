@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Backend.Features.Contacts
+namespace Backend.Features.Clients
 {
     [Table("Contact")]
     public class Contact

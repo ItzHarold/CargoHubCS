@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.Suppliers
 {
     [Table("Suppliers")]
-    public class Supplier
+    public class Supplier : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -41,10 +41,5 @@ namespace Backend.Features.Suppliers
 
         [Required]
         public required string Reference { get; set; }
-
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }

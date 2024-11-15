@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Backend.Features.Shipments
 {
     [Table("Shipments")]
-    public class Shipment
+    public class Shipment : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -55,9 +55,5 @@ namespace Backend.Features.Shipments
         [Required]
         public required decimal TotalPackageWeight { get; set; }
 
-        [Required]
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime? UpdatedAt { get; set; }
     }
 }
