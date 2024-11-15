@@ -1,21 +1,23 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-using System.ComponentModel.DataAnnotations;
-
-namespace Backend.Features.Clients
+namespace Backend.Features.Contacts
 {
+    [Table("Contact")]
     public class Contact
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public required int Id { get; set; }
+
         [Required]
-        public required string Name { get; set; }
+        public required string ContactName { get; set; }
+
+        [Required]
+        public required string ContactPhone { get; set; }
 
         [Required]
         [EmailAddress]
-        public required string Email { get; set; }
-
-        [Required]
-        [Phone]
-        public required string Phone { get; set; }
+        public required string ContactEmail { get; set; }
     }
 }
