@@ -1,0 +1,41 @@
+### Get all clients
+GET http://localhost:5031/api/clients
+
+### Get a client by ID
+GET http://localhost:5031/api/clients/1
+
+### Add a new client
+POST http://localhost:5031/api/clients
+Content-Type: application/json
+
+{
+    "name": "John Jane",
+    "address": "123 Main St",
+    "city": "Anytown",
+    "zipCode": "12345",
+    "province": "Anyprovince",
+    "country": "Anycountry",
+    "contactName": "Jane Doe",
+    "contactPhone": "555-1234",
+    "contactEmail": "jane.doe@example.com"
+}
+
+### Update an existing client
+PUT http://localhost:5031/api/clients/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "John Doe Updated",
+    "address": "123 Main St Updated",
+    "city": "Anytown",
+    "zipCode": "12345",
+    "province": "Anyprovince",
+    "country": "Anycountry",
+    "contactName": "Jane Doe",
+    "contactPhone": "555-1234",
+    "contactEmail": "jane.doe@example.com"
+}
+
+### Delete a client
+DELETE http://localhost:5031/api/clients/1
