@@ -1,9 +1,5 @@
 using Backend.Features.Clients;
-<<<<<<< Updated upstream
-using Backend.Infrastructure.Filter;
-=======
 using Backend.Infrastructure.Middleware;
->>>>>>> Stashed changes
 
 namespace Backend;
 
@@ -13,16 +9,9 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        builder.Services.AddAuthorization();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-        builder.Services.AddLogging();
-        builder.Services.AddControllers(options =>
-        {
-            options.Filters.Add<GenericActionFilter>();
-        });
+        builder.Configuration.AddJsonFile("rolesConfig.json", optional: false, reloadOnChange: true);
 
-        builder.Services.AddSingleton<IClientService, ClientService>();
+        ConfigureServices(builder.Services);
 
         var app = builder.Build();
 
@@ -34,13 +23,11 @@ public static class Program
 
         app.UseHttpsRedirection();
 
-<<<<<<< Updated upstream
-=======
         app.UseMiddleware<LoggingMiddleware>();
         app.UseMiddleware<ApiKeyMiddleware>();
-
->>>>>>> Stashed changes
         app.UseAuthorization();
+
+        app.UseMiddleware<ApiKeyMiddleware>();
 
         app.MapControllers();
 
@@ -49,14 +36,18 @@ public static class Program
 
     private static void ConfigureServices(IServiceCollection services)
     {
-<<<<<<< Updated upstream
-=======
         services.AddAuthorization();
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddLogging();
-        services.AddControllers();
->>>>>>> Stashed changes
+        APIkeys-Middelware
+        services.AddControllers(options =>
+        {
+            options.Filters.Add<GenericActionFilter>();
+        });
 
+        services.AddControllers();
+
+        services.AddSingleton<IClientService, ClientService>();
     }
 }
