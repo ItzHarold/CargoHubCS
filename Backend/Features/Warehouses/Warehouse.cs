@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Backend.Features.Clients;
 
 namespace Backend.Features.Warehouses
 {
@@ -32,7 +33,6 @@ namespace Backend.Features.Warehouses
         public required string Country { get; set; }
 
         [Required]
-        [ForeignKey("Contact")]
-        public required int ContactId { get; set; }
+        public required Contact[] Contacts { get; set; }
     }
 }
