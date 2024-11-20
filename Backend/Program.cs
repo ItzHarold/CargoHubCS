@@ -1,3 +1,6 @@
+using Backend.Features.Clients;
+using Backend.Infrastructure.Filter;
+
 namespace Backend;
 
 public static class Program
@@ -6,16 +9,19 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
         builder.Services.AddAuthorization();
-
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddLogging();
+        builder.Services.AddControllers(options =>
+        {
+            options.Filters.Add<GenericActionFilter>();
+        });
+
+        builder.Services.AddSingleton<IClientService, ClientService>();
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -25,6 +31,8 @@ public static class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
+
+        app.MapControllers();
 
         app.Run();
     }
