@@ -27,8 +27,6 @@ public static class Program
         app.UseMiddleware<ApiKeyMiddleware>();
         app.UseAuthorization();
 
-        app.UseMiddleware<ApiKeyMiddleware>();
-
         app.MapControllers();
 
         app.Run();
@@ -40,12 +38,6 @@ public static class Program
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddLogging();
-        APIkeys-Middelware
-        services.AddControllers(options =>
-        {
-            options.Filters.Add<GenericActionFilter>();
-        });
-
         services.AddControllers();
 
         services.AddSingleton<IClientService, ClientService>();
