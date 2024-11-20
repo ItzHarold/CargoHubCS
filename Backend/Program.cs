@@ -1,5 +1,9 @@
 using Backend.Features.Clients;
+<<<<<<< Updated upstream
 using Backend.Infrastructure.Filter;
+=======
+using Backend.Infrastructure.Middleware;
+>>>>>>> Stashed changes
 
 namespace Backend;
 
@@ -30,6 +34,12 @@ public static class Program
 
         app.UseHttpsRedirection();
 
+<<<<<<< Updated upstream
+=======
+        app.UseMiddleware<LoggingMiddleware>();
+        app.UseMiddleware<ApiKeyMiddleware>();
+
+>>>>>>> Stashed changes
         app.UseAuthorization();
 
         app.MapControllers();
@@ -39,6 +49,14 @@ public static class Program
 
     private static void ConfigureServices(IServiceCollection services)
     {
+<<<<<<< Updated upstream
+=======
+        services.AddAuthorization();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+        services.AddLogging();
+        services.AddControllers();
+>>>>>>> Stashed changes
 
     }
 }
