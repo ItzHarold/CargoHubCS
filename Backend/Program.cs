@@ -1,5 +1,4 @@
 using Backend.Features.Clients;
-using Backend.Infrastructure.Filter;
 using Backend.Infrastructure.Middleware;
 
 namespace Backend;
@@ -24,6 +23,8 @@ public static class Program
 
         app.UseHttpsRedirection();
 
+        app.UseMiddleware<LoggingMiddleware>();
+        app.UseMiddleware<ApiKeyMiddleware>();
         app.UseAuthorization();
 
         app.UseMiddleware<ApiKeyMiddleware>();
@@ -39,10 +40,13 @@ public static class Program
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddLogging();
+        APIkeys-Middelware
         services.AddControllers(options =>
         {
             options.Filters.Add<GenericActionFilter>();
         });
+
+        services.AddControllers();
 
         services.AddSingleton<IClientService, ClientService>();
     }
