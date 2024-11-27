@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Backend.Features.Clients;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers.Clients
 {
