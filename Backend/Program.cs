@@ -1,3 +1,6 @@
+using Backend.Features.Clients;
+using Backend.Infrastructure.Middleware;
+
 namespace Backend;
 
 public static class Program
@@ -6,16 +9,12 @@ public static class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-        builder.Services.AddAuthorization();
+        builder.Configuration.AddJsonFile("rolesConfig.json", optional: false, reloadOnChange: true);
 
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        ConfigureServices(builder.Services);
 
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -24,13 +23,23 @@ public static class Program
 
         app.UseHttpsRedirection();
 
+        app.UseMiddleware<LoggingMiddleware>();
+        app.UseMiddleware<ApiKeyMiddleware>();
         app.UseAuthorization();
+
+        app.MapControllers();
 
         app.Run();
     }
 
     private static void ConfigureServices(IServiceCollection services)
     {
+        services.AddAuthorization();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
+        services.AddLogging();
+        services.AddControllers();
 
+        services.AddSingleton<IClientService, ClientService>();
     }
 }
