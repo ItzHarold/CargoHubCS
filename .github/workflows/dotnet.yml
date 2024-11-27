@@ -21,6 +21,11 @@ jobs:
         run: dotnet format --verify-no-changes
       - name: Build
         run: dotnet build --no-restore
+      - name: Upload Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet_build
+          path: build/
 
   test:
     runs-on: self-hosted
@@ -32,8 +37,10 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      - name: Build
-        run: dotnet build
+      - name: Download Build
+        uses: actions/download-artifact@v4
+        with:
+          name: dotnet_build
       - name: Test
         run: dotnet test --collect:"XPlat Code Coverage" --no-build --results-directory ./TestResults
       - name: Install ReportGenerator
