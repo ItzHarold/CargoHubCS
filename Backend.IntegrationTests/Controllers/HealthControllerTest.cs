@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,7 +13,11 @@ public class HealthControllerTest
     {
         _client = new HttpClient();
         _client.BaseAddress = new Uri("http://localhost:5031");
-        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("API_KEY"));
+        var apiKey = Environment.GetEnvironmentVariable("API_KEY");
+        if (!string.IsNullOrEmpty(apiKey))
+        {
+            _client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
+        }
     }
 
     [Fact]
