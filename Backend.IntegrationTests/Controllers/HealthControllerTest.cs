@@ -1,7 +1,6 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -13,7 +12,7 @@ public class HealthControllerTest
     {
         _client = new HttpClient();
         _client.BaseAddress = new Uri("http://localhost:5031");
-        var apiKey = Environment.GetEnvironmentVariable("API_KEY");
+        var apiKey = Environment.GetEnvironmentVariable("UserApiKey");
         if (!string.IsNullOrEmpty(apiKey))
         {
             _client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
