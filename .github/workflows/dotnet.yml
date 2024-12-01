@@ -1,4 +1,5 @@
 name: .NET
+
 on:
   push:
     branches: [ "main", "development" ]
@@ -20,7 +21,7 @@ jobs:
       - name: Format
         run: dotnet format --verify-no-changes
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore --output build/
       - name: Upload Build
         uses: actions/upload-artifact@v4
         with:
@@ -41,8 +42,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dotnet_build
+          path: build/
+      - name: Start Web Application
+        run: |
+          dotnet run --project ./path/to/your/web/project --urls "http://localhost:5031" &
+          sleep 10 # Wait for the application to start
       - name: Test
-        run: dotnet test --collect:"XPlat Code Coverage" --no-build --results-directory ./TestResults
+        run: dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - name: Generate Coverage Reports
