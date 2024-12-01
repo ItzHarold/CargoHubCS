@@ -1,13 +1,11 @@
 {
     "ApiKeys": {
-        "GitHubApiKey": "AdminApiKey",
-        "UserApiKey": "UserApiKey"
+        "3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f": "NewUser"
     },
     "Roles": {
-        "Admin": [
+        "NewUser": [
             "GetAllClients",
             "AddClient"
-        ],
-        "User": ["GetAllClients"]
+        ]
     }
 }
