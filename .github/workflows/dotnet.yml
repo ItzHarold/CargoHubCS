@@ -45,7 +45,7 @@ jobs:
           path: build/
       - name: Start Web Application
         run: |
-          dotnet run --project ./path/to/your/web/project --urls "http://localhost:5031" &
+          dotnet run --project ./Backend --urls "http://localhost:5031" &
           sleep 10 # Wait for the application to start
       - name: Test
         run: dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults
