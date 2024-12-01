@@ -12,8 +12,11 @@ public class HealthControllerTest
     {
         _client = new HttpClient();
         _client.BaseAddress = new Uri("http://localhost:5031");
-        var apiKey = "3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f";
-        _client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
+        var apiKey = Environment.GetEnvironmentVariable("UserApiKey");
+        if (!string.IsNullOrEmpty(apiKey))
+        {
+            _client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
+        }
     }
 
     [Fact]
