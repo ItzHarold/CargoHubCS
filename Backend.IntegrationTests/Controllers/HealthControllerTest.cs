@@ -1,27 +1,25 @@
-using System;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Xunit;
-
-namespace Backend.IntegrationTests.Controllers;
 
 public class HealthControllerTest
 {
-    readonly HttpClient _httpClient;
+    private readonly HttpClient _client;
+
     public HealthControllerTest()
     {
-        _httpClient = new HttpClient();
+        _client = new HttpClient();
+        _client.BaseAddress = new Uri("http://localhost:5031");
+        _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Environment.GetEnvironmentVariable("API_KEY"));
     }
 
     [Fact]
     public async Task HealthControllerOnSuccessReturns200()
     {
-        // X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
-        _httpClient.BaseAddress = new Uri("http://localhost:5031/api/");
-        _httpClient.DefaultRequestHeaders.Add("X-API-KEY", "3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f");
-
-        var response = await _httpClient.GetAsync("health/");
-
+        var response = await _client.GetAsync("/health");
         response.EnsureSuccessStatusCode();
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 }
