@@ -13,7 +13,7 @@ namespace Backend.Features.Inventories
         void DeleteInventory(int id);
     }
 
-    public class InventoryService : IInventoryService
+    public class InventoryService
     {
 
     }

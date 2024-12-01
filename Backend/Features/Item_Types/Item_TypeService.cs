@@ -13,7 +13,7 @@ namespace Backend.Features.ItemTypes
         void DeleteItemType(int id);
     }
 
-    public class ItemTypeService : IItemTypeService
+    public class ItemTypeService
     {
 
     }

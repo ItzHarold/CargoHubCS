@@ -13,7 +13,7 @@ namespace Backend.Features.Shipments
         void DeleteShipment(int id);
     }
 
-    public class ShipmentService : IShipmentService
+    public class ShipmentService
     {
 
     }

@@ -13,7 +13,7 @@ namespace Backend.Features.ItemLines
         void DeleteItemLine(int id);
     }
 
-    public class ItemLineService : IItemLineService
+    public class ItemLineService
     {
 
     }

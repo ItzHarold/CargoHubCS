@@ -13,7 +13,7 @@ namespace Backend.Features.Suppliers
         void DeleteSupplier(int id);
     }
 
-    public class SupplierService : ISupplierService
+    public class SupplierService
     {
 
     }

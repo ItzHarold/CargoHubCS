@@ -13,7 +13,7 @@ namespace Backend.Features.Warehouses
         void DeleteWarehouse(int id);
     }
 
-    public class WarehouseService : IWarehouseService
+    public class WarehouseService
     {
 
     }

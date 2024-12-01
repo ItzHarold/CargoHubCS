@@ -13,7 +13,7 @@ namespace Backend.Features.Items
         void DeleteItem(int id);
     }
 
-    public class ItemService : IItemService
+    public class ItemService
     {
 
     }

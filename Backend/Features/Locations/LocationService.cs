@@ -13,7 +13,7 @@ namespace Backend.Features.Locations
         void DeleteLocation(int id);
     }
 
-    public class LocationService : ILocationService
+    public class LocationService
     {
 
     }

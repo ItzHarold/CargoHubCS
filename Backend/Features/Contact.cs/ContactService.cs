@@ -13,8 +13,7 @@ namespace Backend.Features.Contacts
         void DeleteContact(int id);
     }
 
-    public class ContactService : IContactService
+    public class ContactService
     {
-
     }
 }

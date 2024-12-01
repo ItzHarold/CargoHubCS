@@ -13,7 +13,7 @@ namespace Backend.Features.Orders
         void DeleteOrder(int id);
     }
 
-    public class OrderService : IOrderService
+    public class OrderService
     {
 
     }

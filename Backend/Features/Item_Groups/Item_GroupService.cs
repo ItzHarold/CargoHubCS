@@ -13,7 +13,7 @@ namespace Backend.Features.ItemGroups
         void DeleteItemGroup(int id);
     }
 
-    public class ItemGroupService : IItemGroupService
+    public class ItemGroupService
     {
 
     }

@@ -13,7 +13,7 @@ namespace Backend.Features.Transfers
         void DeleteTransfer(int id);
     }
 
-    public class TransferService : ITransferService
+    public class TransferService
     {
 
     }
