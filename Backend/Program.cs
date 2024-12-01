@@ -13,6 +13,12 @@ public static class Program
 
         ConfigureServices(builder.Services);
 
+        var apiKey = Environment.GetEnvironmentVariable("API_KEY");
+        if (!string.IsNullOrEmpty(apiKey))
+        {
+            builder.Configuration["ApiKeys:GitHubApiKey"] = apiKey;
+        }
+
         var app = builder.Build();
 
         if (app.Environment.IsDevelopment())
