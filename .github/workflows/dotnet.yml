@@ -46,7 +46,7 @@ jobs:
       - name: Test
         env:
           API_KEY: ${{ secrets.API_KEY }}
-        run: dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults
+        run: dotnet test --collect:"XPlat Code Coverage" --no-build --results-directory ./TestResults
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - name: Generate Coverage Reports
