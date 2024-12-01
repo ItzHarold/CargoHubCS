@@ -1,5 +1,4 @@
 name: .NET
-
 on:
   push:
     branches: [ "main", "development" ]
@@ -21,7 +20,7 @@ jobs:
       - name: Format
         run: dotnet format --verify-no-changes
       - name: Build
-        run: dotnet build --no-restore --output build/
+        run: dotnet build --no-restore
       - name: Upload Build
         uses: actions/upload-artifact@v4
         with:
@@ -42,10 +41,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dotnet_build
-          path: build/
       - name: Test
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
         run: dotnet test --collect:"XPlat Code Coverage" --no-build --results-directory ./TestResults
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
