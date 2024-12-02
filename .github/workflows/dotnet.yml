@@ -20,12 +20,12 @@ jobs:
       - name: Format Code
         run: dotnet format --verify-no-changes
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --configuration Debug --no-restore
       - name: Upload Build
         uses: actions/upload-artifact@v4
         with:
           name: dotnet_build
-          path: ./bin
+          path: ./Backend/bin/Debug
 
   test:
     runs-on: self-hosted
