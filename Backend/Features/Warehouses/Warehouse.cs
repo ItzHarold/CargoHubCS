@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Backend.Features.Clients;
+using Backend.Features.Contacts;
 
 namespace Backend.Features.Warehouses
 {
