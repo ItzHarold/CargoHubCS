@@ -6,7 +6,7 @@ on:
     branches: [ "main", "development" ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: self-hosted
 
     steps:
@@ -21,30 +21,10 @@ jobs:
         run: dotnet format --verify-no-changes
       - name: Build
         run: dotnet build --configuration Debug --no-restore
-      - name: Upload Build
-        uses: actions/upload-artifact@v4
-        with:
-          name: dotnet_build
-          path: ./Backend/bin/Debug
-
-  test:
-    runs-on: self-hosted
-    needs: build
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-      - name: Download Build
-        uses: actions/download-artifact@v4
-        with:
-          name: dotnet_build
       - name: Run Integration Tests
-        run: dotnet test ./Backend.IntegrationTests/Backend.IntegrationTests.csproj --collect:"XPlat Code Coverage" --no-build --results-directory ./TestResults
+        run: dotnet test Backend.IntegrationTests/Backend.IntegrationTests.csproj --collect:"XPlat Code Coverage" --no-restore --results-directory ./TestResults
       - name: Run Unit Tests
-        run: dotnet test ./Backend.UnitTests/Backend.UnitTests.csproj --collect:"XPlat Code Coverage" --no-build --results-directory ./TestResults
+        run: dotnet test Backend.UnitTests/Backend.UnitTests.csproj --collect:"XPlat Code Coverage" --no-restore --results-directory ./TestResults
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
       - name: Generate Coverage Reports
