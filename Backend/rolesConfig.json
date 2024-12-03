@@ -5,7 +5,8 @@
     "Roles": {
         "NewUser": [
             "GetAllClients",
-            "AddClient"
+            "AddClient",
+            "HealthCheck"
         ]
     }
 }

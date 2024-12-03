@@ -1,4 +1,5 @@
 using Backend.Features.Clients;
+using Backend.Features.Warehouses;
 using Backend.Infrastructure.Middleware;
 
 namespace Backend;
@@ -41,5 +42,6 @@ public static class Program
         services.AddControllers();
 
         services.AddSingleton<IClientService, ClientService>();
+        services.AddSingleton<IWarehouseService, WarehouseService>();
     }
 }
