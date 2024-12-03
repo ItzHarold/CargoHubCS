@@ -6,7 +6,8 @@
         "NewUser": [
             "GetAllClients",
             "AddClient",
-            "HealthCheck"
+            "HealthCheck",
+            "GetAllWarehouses"
         ]
     }
 }
