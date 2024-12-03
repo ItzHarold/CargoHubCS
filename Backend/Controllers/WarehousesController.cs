@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
 using Backend.Features.Warehouses;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers.Warehouses
 {
