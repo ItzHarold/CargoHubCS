@@ -1,7 +1,14 @@
 using Backend.Features.Clients;
 using Backend.Features.Contacts;
+using Backend.Features.Inventories;
+using Backend.Features.ItemGroups;
+using Backend.Features.ItemLines;
 using Backend.Features.Items;
+using Backend.Features.ItemTypes;
 using Backend.Features.Locations;
+using Backend.Features.Orders;
+using Backend.Features.Shipments;
+using Backend.Features.Suppliers;
 using Backend.Features.Transfers;
 
 using Backend.Features.Warehouses;
@@ -52,5 +59,12 @@ public static class Program
         services.AddSingleton<ITransferService, TransferService>();
         services.AddSingleton<ILocationService, LocationService>();
         services.AddSingleton<IItemService, ItemService>();
+        //services.AddSingleton<IInventoryService, InventoryService>();
+        //services.AddSingleton<IItemGroupService,ItemGroupService>();
+        // services.AddSingleton<IItemLineService,ItemLineService>();
+        // services.AddSingleton<IItemTypeService,ItemTypeService>();
+        // services.AddSingleton<IOrderService,OrderService>();
+        // services.AddSingleton<IShipmentService,ShipmentService>();
+        // services.AddSingleton<ISupplierService,SupplierService>();
     }
 }
