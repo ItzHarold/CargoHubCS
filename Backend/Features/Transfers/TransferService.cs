@@ -7,14 +7,18 @@ namespace Backend.Features.Transfers
     public interface ITransferService
     {
         IEnumerable<Transfer> GetAllTransfers();
-        Transfer? GetTransferById(int id);
-        void AddTransfer(Transfer transfer);
-        void UpdateTransfer(Transfer transfer);
-        void DeleteTransfer(int id);
+        // Transfer? GetTransferById(int id);
+        // void AddTransfer(Transfer transfer);
+        // void UpdateTransfer(Transfer transfer);
+        // void DeleteTransfer(int id);
     }
 
-    public class TransferService
+    public class TransferService : ITransferService
     {
-
+        private readonly List<Transfer> _transfers = new();
+        public IEnumerable<Transfer> GetAllTransfers()
+        {
+            return _transfers;
+        }
     }
 }
