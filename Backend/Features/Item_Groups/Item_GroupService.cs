@@ -8,7 +8,7 @@ namespace Backend.Features.ItemGroups
     {
         IEnumerable<ItemGroup> GetAllItemGroups();
         ItemGroup? GetItemGroupById(int id);
-        // void AddItemGroup(ItemGroup itemGroup);
+        void AddItemGroup(ItemGroup itemGroup);
         // void UpdateItemGroup(ItemGroup itemGroup);
         // void DeleteItemGroup(int id);
     }
@@ -25,6 +25,12 @@ namespace Backend.Features.ItemGroups
         public ItemGroup? GetItemGroupById(int id)
         {
             return _itemGroups.FirstOrDefault(c => c.Id == id);
+        }
+
+        public void AddItemGroup(ItemGroup itemGroup)
+        {
+            itemGroup.Id = _itemGroups.Count > 0 ? _itemGroups.Max(c => c.Id) + 1 : 1;
+            _itemGroups.Add(itemGroup);
         }
 
 
