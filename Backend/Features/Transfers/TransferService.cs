@@ -10,7 +10,7 @@ namespace Backend.Features.Transfers
         Transfer? GetTransferById(int id);
         void AddTransfer(Transfer transfer);
         void UpdateTransfer(Transfer transfer);
-        // void DeleteTransfer(int id);
+        void DeleteTransfer(int id);
     }
 
     public class TransferService : ITransferService
@@ -44,6 +44,17 @@ namespace Backend.Features.Transfers
             existingTransfer.TransferTo = transfer.TransferTo;
             existingTransfer.TransferStatus = transfer.TransferStatus;
             //Items
+        }
+
+        public void DeleteTransfer(int id)
+        {
+            var transfer = _transfers.FirstOrDefault(x => x.Id == id);
+            if (transfer == null)
+            {
+                return;
+            }
+
+            _transfers.Remove(transfer);
         }
     }
 }
