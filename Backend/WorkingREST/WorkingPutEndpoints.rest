@@ -156,17 +156,11 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "reference": "TR00002",
-  "transfer_from": 1001,
-  "transfer_to": 9229,
-  "transfer_status": "Completed",
-  "items": [
-    {
-      "item_id": "P007435",
-      "amount": 23
-    }
-  ]
+    "Id": 1,
+    "Reference": "T00001",
+    "TransferFrom": 1,
+    "TransferTo": 2,
+    "TransferStatus": "Succeeded"
 }
 
 ### Update an existing warehouse

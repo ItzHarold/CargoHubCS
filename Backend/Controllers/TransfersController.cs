@@ -32,5 +32,11 @@ namespace Backend.Controllers.Transfers
         {
             return _transferService.GetTransferById(id);
         }
+
+        [HttpPut("{id}")]
+        public void UpdateTransfer([FromBody] Transfer transfer)
+        {
+            _transferService.UpdateTransfer(transfer);
+        }
     }
 }
