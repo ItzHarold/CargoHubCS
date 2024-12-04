@@ -21,5 +21,16 @@ namespace Backend.Controllers.ItemGroupsController
             var itemGroups = _itemGroupService.GetAllItemGroups();
             return Ok(itemGroups);
         }
+        
+        [HttpGet("{id}")]
+        public IActionResult GetItemGroupById(int id)
+        {
+            var itemGroup = _itemGroupService.GetItemGroupById(id);
+            if (itemGroup == null)
+            {
+                return NotFound();
+            }
+            return Ok(itemGroup);
+        }
     }
 }
