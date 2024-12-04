@@ -8,7 +8,7 @@ namespace Backend.Features.Inventories
     {
         IEnumerable<Inventory> GetAllInventories();
         Inventory? GetInventoryById(int id);
-        // void AddInventory(Inventory inventory);
+        void AddInventory(Inventory inventory);
         // void UpdateInventory(Inventory inventory);
         // void DeleteInventory(int id);
     }
@@ -24,6 +24,12 @@ namespace Backend.Features.Inventories
         public Inventory? GetInventoryById(int id)
         {
             return _inventories.FirstOrDefault(c => c.Id == id);
+        }
+
+        public void AddInventory(Inventory inventory)
+        {
+            inventory.Id = _inventories.Count > 0 ? _inventories.Max(c => c.Id) + 1 : 1;
+            _inventories.Add(inventory);
         }
     }
 }

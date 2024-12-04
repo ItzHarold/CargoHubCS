@@ -32,5 +32,11 @@ namespace Backend.Controllers.Inventories
             }
             return Ok(inventory);
         }
+
+        public IActionResult AddInventory(Inventory inventory)
+        {
+            _inventoryService.AddInventory(inventory);
+            return CreatedAtAction(nameof(GetInventoryById), new { id = inventory.Id }, inventory);
+        }
     }
 }
