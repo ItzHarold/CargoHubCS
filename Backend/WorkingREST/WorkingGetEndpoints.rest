@@ -67,7 +67,7 @@ GET http://localhost:5031/api/item_lines/1/items
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 ### Get for all items_groups
-GET http://localhost:5031/api/item_groups
+GET http://localhost:5031/api/itemgroups
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 ### Get for items_groups by id
