@@ -9,7 +9,7 @@ namespace Backend.Features.Inventories
         IEnumerable<Inventory> GetAllInventories();
         Inventory? GetInventoryById(int id);
         void AddInventory(Inventory inventory);
-        // void UpdateInventory(Inventory inventory);
+        void UpdateInventory(Inventory inventory);
         // void DeleteInventory(int id);
     }
 
@@ -30,6 +30,26 @@ namespace Backend.Features.Inventories
         {
             inventory.Id = _inventories.Count > 0 ? _inventories.Max(c => c.Id) + 1 : 1;
             _inventories.Add(inventory);
+        }
+
+        public void UpdateInventory(Inventory inventory)
+        {
+            var existingInventory = GetInventoryById(inventory.Id);
+            if (existingInventory != null)
+            {
+                var updatedInventory = new Inventory
+                {
+                    Id = existingInventory.Id,
+                    ItemId = existingInventory.ItemId,
+                    TotalOnHand = inventory.TotalOnHand,
+                    TotalExpected = inventory.TotalExpected,
+                    TotalOrdered = inventory.TotalOrdered,
+                    TotalAllocated = inventory.TotalAllocated,
+                    TotalAvailable = inventory.TotalAvailable,
+                    Description = inventory.Description
+                };
+                _inventories[_inventories.IndexOf(existingInventory)] = updatedInventory;
+            }
         }
     }
 }

@@ -38,5 +38,16 @@ namespace Backend.Controllers.Inventories
             _inventoryService.AddInventory(inventory);
             return CreatedAtAction(nameof(GetInventoryById), new { id = inventory.Id }, inventory);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateInventory(int id, Inventory inventory)
+        {
+            if (id != inventory.Id)
+            {
+                return BadRequest();
+            }
+            _inventoryService.UpdateInventory(inventory);
+            return NoContent();
+        }
     }
 }
