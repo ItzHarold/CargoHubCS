@@ -51,7 +51,8 @@
             "GetAllContacts",
             "GetContactById",
             "AddContact",
-            "UpdateContact"
+            "UpdateContact",
+            "DeleteContact"
         ],
         "WarehouseManager": [
             "HealthCheck",
