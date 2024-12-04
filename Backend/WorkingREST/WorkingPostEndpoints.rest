@@ -29,6 +29,19 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "status": "active"
 }
 
+### POST Request to add a new contact
+POST http://localhost:5031/api/contacts
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "id": "1",
+  "contactName": "Charlotte",
+  "contactPhone": "123123123",
+  "contactEmail": "test@test.nl"
+
+}
+
 ### POST Request to add a new inventory entry
 POST http://localhost:5031/api/inventories
 Content-Type: application/json

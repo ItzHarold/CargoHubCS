@@ -21,5 +21,22 @@ namespace Backend.Controllers.Contacts
             var contacts = _contactService.GetAllContacts();
             return Ok(contacts);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetContactById(int id)
+        {
+            var contact = _contactService.GetContactById(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+            return Ok(contact);
+        }
+
+        public IActionResult AddContact(Contact contact)
+        {
+            _contactService.AddContact(contact);
+            return CreatedAtAction(nameof(GetContactById), new { id = contact.Id }, contact);
+        }
     }
 }
