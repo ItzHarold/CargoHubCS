@@ -49,5 +49,12 @@ namespace Backend.Controllers.Inventories
             _inventoryService.UpdateInventory(inventory);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteInventory(int id)
+        {
+            _inventoryService.DeleteInventory(id);
+            return NoContent();
+        }
     }
 }

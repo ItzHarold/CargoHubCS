@@ -10,7 +10,7 @@ namespace Backend.Features.Inventories
         Inventory? GetInventoryById(int id);
         void AddInventory(Inventory inventory);
         void UpdateInventory(Inventory inventory);
-        // void DeleteInventory(int id);
+        void DeleteInventory(int id);
     }
 
     public class InventoryService : IInventoryService
@@ -49,6 +49,15 @@ namespace Backend.Features.Inventories
                     Description = inventory.Description
                 };
                 _inventories[_inventories.IndexOf(existingInventory)] = updatedInventory;
+            }
+        }
+
+        public void DeleteInventory(int id)
+        {
+            var inventory = GetInventoryById(id);
+            if (inventory != null)
+            {
+                _inventories.Remove(inventory);
             }
         }
     }
