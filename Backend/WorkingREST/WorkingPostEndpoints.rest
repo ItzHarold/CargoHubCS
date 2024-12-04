@@ -1,7 +1,7 @@
 ### POST Request to add a new client
-POST http://localhost:3000/api/v1/clients
+POST http://localhost:5031/api/clients
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "name": "Jurwin",
@@ -16,9 +16,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing client entry using POST
-POST http://localhost:3000/api/v1/clients/update
+POST http://localhost:5031/api/clients/update
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": "1",
@@ -30,9 +30,9 @@ api_key: a1b2c3d4e5
 }
 
 ### POST Request to add a new inventory entry
-POST http://localhost:3000/api/v1/inventories
+POST http://localhost:5031/api/inventories
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "item_id": "P000002",
@@ -47,9 +47,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing inventory entry using POST
-POST http://localhost:3000/api/v1/inventories/update
+POST http://localhost:5031/api/inventories/update
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": "P000002",
@@ -64,9 +64,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new item
-POST http://localhost:3000/api/v1/items
+POST http://localhost:5031/api/items
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "uid": "P001201",
@@ -88,9 +88,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new location
-POST http://localhost:3000/api/v1/locations
+POST http://localhost:5031/api/locations
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "code": "C.5.2",
@@ -98,9 +98,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new order
-POST http://localhost:3000/api/v1/orders
+POST http://localhost:5031/api/orders
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "source_id": 34,
@@ -129,9 +129,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new shipment
-POST http://localhost:3000/api/v1/shipments
+POST http://localhost:5031/api/shipments
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "order_id": 2,
@@ -162,9 +162,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new supplier
-POST http://localhost:3000/api/v1/suppliers
+POST http://localhost:5031/api/suppliers
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "code": "SUP0002",
@@ -181,9 +181,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new transfer
-POST http://localhost:3000/api/v1/transfers
+POST http://localhost:5031/api/transfers
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 2,
@@ -204,9 +204,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new warehouse
-POST http://localhost:3000/api/v1/warehouses
+POST http://localhost:5031/api/warehouses
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "code": "XK9YJ7B3",
@@ -224,9 +224,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new item type
-POST http://localhost:3000/api/v1/item-types
+POST http://localhost:5031/api/item-types
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
     "id": 0,
@@ -235,9 +235,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new item group
-POST http://localhost:3000/api/v1/item_groups
+POST http://localhost:5031/api/item_groups
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
     "name": "New Category",
@@ -245,9 +245,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Add a new item line
-POST http://localhost:3000/api/v1/item-lines
+POST http://localhost:5031/api/item-lines
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
     "id": "IL00001",

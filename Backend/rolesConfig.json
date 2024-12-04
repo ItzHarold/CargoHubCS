@@ -47,7 +47,8 @@
             "GetTransferById",
             "AddTransfer",
             "UpdateTransfer",
-            "DeleteTransfer"
+            "DeleteTransfer",
+            "GetAllContacts"
         ],
         "WarehouseManager": [
             "HealthCheck",

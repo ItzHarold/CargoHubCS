@@ -1,4 +1,5 @@
 using Backend.Features.Clients;
+using Backend.Features.Contacts;
 using Backend.Features.Warehouses;
 using Backend.Infrastructure.Middleware;
 
@@ -43,5 +44,6 @@ public static class Program
 
         services.AddSingleton<IClientService, ClientService>();
         services.AddSingleton<IWarehouseService, WarehouseService>();
+        services.AddSingleton<IContactService, ContactService>();
     }
 }
