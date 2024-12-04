@@ -180,17 +180,18 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "code": "SUP0002",
-  "name": "Jur & Co.",
-  "address": "1234 Wijnhaven",
-  "address_extra": "",
-  "city": "Rotterdam",
-  "zip_code": "2342JK",
-  "province": "Zuid-Holland",
-  "country": "Netherlands",
-  "contact_name": "Jur",
-  "phonenumber": "01028903847",
-  "reference": "Smith-SUP0002"
+    "Id": 1,
+    "Code": "SUP0002",
+    "Name": "Jur & Co.",
+    "Address": "1234 Wijnhaven",
+    "AddressExtra": "",
+    "City": "Rotterdam",
+    "ZipCode": "2342JK",
+    "Province": "Zuid-Holland",
+    "Country": "Netherlands",
+    "ContactName": "Jur",
+    "PhoneNumber": "01028903847",
+    "Reference": "Smith-SUP0002"
 }
 
 ### Add a new transfer
