@@ -38,5 +38,11 @@ namespace Backend.Controllers.Transfers
         {
             _transferService.UpdateTransfer(transfer);
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteTransfer(int id)
+        {
+            _transferService.DeleteTransfer(id);
+        }
     }
 }
