@@ -1,0 +1,202 @@
+### Update an existing item group
+PUT http://localhost:3000/api/v1/item_groups/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "name": "New Name",
+  "description": "Updated description for the category"
+}
+
+### Update an item
+PUT http://localhost:3000/api/v1/items/P000001
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "uid": "P001201",
+  "code": "sjQ23408K",
+  "description": "updated Item",
+  "short_description": "updated item",
+  "upc_code": "6523523427122",
+  "model_number": "44-9JeF0S",
+  "commodity_code": "Lwoak",
+  "item_line": 15,
+  "item_group": 80,
+  "item_type": 14,
+  "unit_purchase_quantity": 20,
+  "unit_order_quantity": 12,
+  "pack_order_quantity": 7,
+  "supplier_id": 79,
+  "supplier_code": "MSI902",
+  "supplier_part_number": "A-75389-mNT"
+}
+
+### Update an existing location
+PUT http://localhost:3000/api/v1/locations/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "warehouse_id": 1,
+  "code": "Z.5.1",
+  "name": "Row: Z, Rack: 5, Shelf: 1"
+}
+
+### Update an existing order
+PUT http://localhost:3000/api/v1/orders/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "source_id": 33,
+  "order_date": "2019-04-03T11:33:15Z",
+  "request_date": "2019-04-07T11:33:15Z",
+  "reference": "ORD00001",
+  "reference_extra": "Reference.",
+  "order_status": "Delivered",
+  "notes": "Notities.",
+  "shipping_notes": "Shipping notes.",
+  "picking_notes": "Pick up.",
+  "warehouse_id": 18,
+  "ship_to": null,
+  "bill_to": null,
+  "shipment_id": 1,
+  "total_amount": 9905.13,
+  "total_discount": 150.77,
+  "total_tax": 372.72,
+  "total_surcharge": 77.6,
+  "created_at": "2019-04-03T11:33:15Z",
+  "updated_at": "2024-09-17T10:15:00Z",
+  "items": [
+    {
+      "item_id": "P007435",
+      "amount": 23
+    },
+    {
+      "item_id": "P009557",
+      "amount": 1
+    }
+  ]
+}
+
+### Update an existing shipment
+PUT http://localhost:3000/api/v1/shipments/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "order_id": 1,
+  "source_id": 33,
+  "order_date": "2000-03-09",
+  "request_date": "2000-03-11",
+  "shipment_date": "2000-03-13",
+  "shipment_type": "I",
+  "shipment_status": "Pending",
+  "notes": "Updated notes.",
+  "carrier_code": "DPD",
+  "carrier_description": "Description",
+  "service_code": "Fastest",
+  "payment_type": "Manual",
+  "transfer_mode": "Ground",
+  "total_package_count": 31,
+  "total_package_weight": 594.42,
+  "items": [
+    {
+      "item_id": "P007435",
+      "amount": 23
+    },
+    {
+      "item_id": "P009557",
+      "amount": 1
+    }
+  ]
+}
+
+### Update an existing supplier
+PUT http://localhost:3000/api/v1/suppliers/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "code": "SUP0001",
+  "name": "Harold & co.",
+  "address": "Wijhaven 10",
+  "address_extra": "10",
+  "city": "Delft",
+  "zip_code": "4857JK",
+  "province": "Zuid-Holland",
+  "country": "Netherlands",
+  "contact_name": "Harold",
+  "phonenumber": "0102345678",
+  "reference": "LPaJ-SUP0001"
+}
+
+### Update an existing transfer
+PUT http://localhost:3000/api/v1/transfers/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "reference": "TR00002",
+  "transfer_from": 1001,
+  "transfer_to": 9229,
+  "transfer_status": "Completed",
+  "items": [
+    {
+      "item_id": "P007435",
+      "amount": 23
+    }
+  ]
+}
+
+### Update an existing warehouse
+PUT http://localhost:3000/api/v1/warehouses/1
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+  "id": 1,
+  "code": "YQZZNL56",
+  "name": "Daniel's company",
+  "address": "Wijnstraat 200",
+  "zip": "2819 YW",
+  "city": "Maastricht",
+  "province": "Limburg",
+  "country": "NL",
+  "contact": {
+    "name": "Daniel Nales",
+    "phone": "(078) 0013363",
+    "email": "Daniel@example.net"
+  }
+}
+
+### Update an item type
+PUT http://localhost:3000/api/v1/item-types/{item_type_id}
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+    "id": 0,
+    "name": "Updated Laptop",
+    "description": "HP Laptop"
+}
+
+### Update an item line
+PUT http://localhost:3000/api/v1/item-lines/0
+Content-Type: application/json
+api_key: a1b2c3d4e5
+
+{
+    "id": "IL00001",
+    "name": "New Item Line",
+    "description": "New description item line",
+    "quantity": 150,
+    "price": 30.00
+}

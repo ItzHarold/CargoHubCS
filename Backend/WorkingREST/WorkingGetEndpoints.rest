@@ -1,0 +1,143 @@
+### Get for all warehouses
+GET http://localhost:3000/api/v1/warehouses
+api_key: a1b2c3d4e5
+
+### Get for warehouses with ID
+GET http://localhost:3000/api/v1/warehouses/1
+api_key: a1b2c3d4e5
+
+### Get for all locations in warehouse by ID
+GET http://localhost:3000/api/v1/warehouses/1/locations
+api_key: a1b2c3d4e5
+
+### Get for all locations
+GET http://localhost:3000/api/v1/locations
+api_key: a1b2c3d4e5
+
+### Get for locations by ID
+GET http://localhost:3000/api/v1/locations/1
+api_key: a1b2c3d4e5
+
+### Get for all transfers
+GET http://localhost:3000/api/v1/transfers
+api_key: a1b2c3d4e5
+
+### Get for transfers by ID
+GET http://localhost:3000/api/v1/transfers/1
+api_key: a1b2c3d4e5
+
+### Get for items in transfer by ID
+GET http://localhost:3000/api/v1/transfers/1/items
+api_key: a1b2c3d4e5
+
+### Get for all items
+GET http://localhost:3000/api/v1/items
+api_key: a1b2c3d4e5
+
+### Get for items by ID
+GET http://localhost:3000/api/v1/items/P000001
+api_key: a1b2c3d4e5
+
+### Get for inventory in item by ID
+GET http://localhost:3000/api/v1/items/P000001/inventory
+api_key: a1b2c3d4e5
+
+### Get for total inventory in item by ID
+GET http://localhost:3000/api/v1/items/P000001/inventory/totals
+api_key: a1b2c3d4e5
+
+### Get for all item_lines
+GET http://localhost:3000/api/v1/item_lines
+api_key: a1b2c3d4e5
+
+### Get for item_lines by ID
+GET http://localhost:3000/api/v1/item_lines/1
+api_key: a1b2c3d4e5
+
+### Get for items in item_lines by ID
+GET http://localhost:3000/api/v1/item_lines/1/items
+api_key: a1b2c3d4e5
+
+### Get for all items_groups
+GET http://localhost:3000/api/v1/item_groups
+api_key: a1b2c3d4e5
+
+### Get for items_groups by id
+GET http://localhost:3000/api/v1/item_groups/1
+api_key: a1b2c3d4e5
+
+### Get for items in items_groups by ID
+GET http://localhost:3000/api/v1/item_groups/1/items
+api_key: a1b2c3d4e5
+
+### Get for all item_types
+GET http://localhost:3000/api/v1/item_types
+api_key: a1b2c3d4e5
+
+### Get for item_types by ID
+GET http://localhost:3000/api/v1/item_types/1
+api_key: a1b2c3d4e5
+
+### Get for items in item_types by ID
+GET http://localhost:3000/api/v1/item_types/1/items
+api_key: a1b2c3d4e5
+
+### Get for all inventories
+GET http://localhost:3000/api/v1/inventories
+api_key: a1b2c3d4e5
+
+### Get for inventories by ID
+GET http://localhost:3000/api/v1/inventories/1
+api_key: a1b2c3d4e5
+
+### Get for all suppliers
+GET http://localhost:3000/api/v1/suppliers
+api_key: a1b2c3d4e5
+
+### Get for suppliers by ID
+GET http://localhost:3000/api/v1/suppliers/1
+api_key: a1b2c3d4e5
+
+### Get for items in suppliers by ID
+GET http://localhost:3000/api/v1/suppliers/1/items
+api_key: a1b2c3d4e5
+
+### Get for all orders
+GET http://localhost:3000/api/v1/orders
+api_key: a1b2c3d4e5
+
+### Get for orders by ID
+GET http://localhost:3000/api/v1/orders/1
+api_key: a1b2c3d4e5
+
+### Get for items in orders by ID
+GET http://localhost:3000/api/v1/orders/1/items
+api_key: a1b2c3d4e5
+
+### Get for all clients
+GET http://localhost:3000/api/v1/clients
+api_key: a1b2c3d4e5
+
+### Get for clients by ID
+GET http://localhost:3000/api/v1/clients/1
+api_key: a1b2c3d4e5
+
+### Get for orders in clients by ID
+GET http://localhost:3000/api/v1/clients/1/orders
+api_key: a1b2c3d4e5
+
+### Get for all shipments
+GET http://localhost:3000/api/v1/shipments
+api_key: a1b2c3d4e5
+
+### Get for shipments by ID
+GET http://localhost:3000/api/v1/shipments/1
+api_key: a1b2c3d4e5
+
+### Get for orders in shipments by ID
+GET http://localhost:3000/api/v1/shipments/1/orders
+api_key: a1b2c3d4e5
+
+### Get for items in shipments by ID
+GET http://localhost:3000/api/v1/shipments/1/items
+api_key: a1b2c3d4e5
