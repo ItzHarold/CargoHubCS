@@ -7,7 +7,7 @@ namespace Backend.Features.Inventories
     public interface IInventoryService
     {
         IEnumerable<Inventory> GetAllInventories();
-        // Inventory? GetInventoryById(int id);
+        Inventory? GetInventoryById(int id);
         // void AddInventory(Inventory inventory);
         // void UpdateInventory(Inventory inventory);
         // void DeleteInventory(int id);
@@ -20,6 +20,10 @@ namespace Backend.Features.Inventories
         public IEnumerable<Inventory> GetAllInventories()
         {
             return _inventories;
+        }
+        public Inventory? GetInventoryById(int id)
+        {
+            return _inventories.FirstOrDefault(c => c.Id == id);
         }
     }
 }

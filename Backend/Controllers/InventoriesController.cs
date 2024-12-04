@@ -21,5 +21,16 @@ namespace Backend.Controllers.Inventories
             var inventory = _inventoryService.GetAllInventories();
             return Ok(inventory);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetInventoryById(int id)
+        {
+            var inventory = _inventoryService.GetInventoryById(id);
+            if (inventory == null)
+            {
+                return NotFound();
+            }
+            return Ok(inventory);
+        }
     }
 }
