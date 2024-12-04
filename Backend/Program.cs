@@ -1,5 +1,9 @@
 using Backend.Features.Clients;
 using Backend.Features.Contacts;
+using Backend.Features.Items;
+using Backend.Features.Locations;
+using Backend.Features.Transfers;
+
 using Backend.Features.Warehouses;
 using Backend.Infrastructure.Middleware;
 
@@ -45,5 +49,8 @@ public static class Program
         services.AddSingleton<IClientService, ClientService>();
         services.AddSingleton<IWarehouseService, WarehouseService>();
         services.AddSingleton<IContactService, ContactService>();
+        services.AddSingleton<ITransferService, TransferService>();
+        services.AddSingleton<ILocationService, LocationService>();
+        services.AddSingleton<IItemService, ItemService>();
     }
 }
