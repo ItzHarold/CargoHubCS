@@ -9,7 +9,7 @@ namespace Backend.Features.Contacts
         IEnumerable<Contact> GetAllContacts();
         Contact? GetContactById(int id);
         void AddContact(Contact contact);
-        // void UpdateContact(Contact contact);
+        void UpdateContact(Contact contact);
         // void DeleteContact(int id);
     }
 
@@ -31,6 +31,21 @@ namespace Backend.Features.Contacts
         {
             contact.Id = _contacts.Count > 0 ? _contacts.Max(c => c.Id) + 1 : 1;
             _contacts.Add(contact);
+        }
+        public void UpdateContact(Contact contact)
+        {
+            var existingContact = GetContactById(contact.Id);
+            if (existingContact != null)
+            {
+                var updatedContact = new Contact
+                {
+                    Id = existingContact.Id,
+                    ContactName = contact.ContactName,
+                    ContactPhone = contact.ContactPhone,
+                    ContactEmail = contact.ContactEmail
+                };
+                _contacts[_contacts.IndexOf(existingContact)] = updatedContact;
+            }
         }
     }
 }
