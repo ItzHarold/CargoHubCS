@@ -9,7 +9,7 @@ namespace Backend.Features.Transfers
         IEnumerable<Transfer> GetAllTransfers();
         Transfer? GetTransferById(int id);
         void AddTransfer(Transfer transfer);
-        // void UpdateTransfer(Transfer transfer);
+        void UpdateTransfer(Transfer transfer);
         // void DeleteTransfer(int id);
     }
 
@@ -29,6 +29,21 @@ namespace Backend.Features.Transfers
         public Transfer? GetTransferById(int id)
         {
             return _transfers.FirstOrDefault(t => t.Id == id);
+        }
+
+        public void UpdateTransfer(Transfer transfer)
+        {
+            var existingTransfer = _transfers.FirstOrDefault(t => t.Id == transfer.Id);
+            if (existingTransfer == null)
+            {
+                return;
+            }
+
+            existingTransfer.Reference = transfer.Reference;
+            existingTransfer.TransferFrom = transfer.TransferFrom;
+            existingTransfer.TransferTo = transfer.TransferTo;
+            existingTransfer.TransferStatus = transfer.TransferStatus;
+            //Items
         }
     }
 }
