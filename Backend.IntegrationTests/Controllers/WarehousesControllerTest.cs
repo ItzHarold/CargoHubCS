@@ -25,7 +25,7 @@ namespace Backend.IntegrationTests.Controllers
         }
 
         [Fact]
-        public async Task GetWarehouseByIdOnSuccessReturns204()
+        public async Task GetWarehouseByIdOnSuccessReturns200()
         {
             // Arrange
             var client = new HttpClient();
@@ -36,7 +36,7 @@ namespace Backend.IntegrationTests.Controllers
             var result = await client.GetAsync("http://localhost:5031/api/warehouses/1");
 
             // Assert
-            result.StatusCode.Should().Be(HttpStatusCode.NoContent);
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         [Fact]
@@ -68,6 +68,21 @@ namespace Backend.IntegrationTests.Controllers
 
             // Act
             var result = await client.PostAsync("http://localhost:5031/api/warehouses", content);
+
+            // Assert
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task DeleteWarehouseOnSuccessReturns204()
+        {
+            // Arrange
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("X-API-KEY", "3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f");
+            // Check out options TODO
+
+            // Act
+            var result = await client.DeleteAsync("http://localhost:5031/api/warehouses/1");
 
             // Assert
             result.StatusCode.Should().Be(HttpStatusCode.OK);
