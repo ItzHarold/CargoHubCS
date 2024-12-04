@@ -38,5 +38,16 @@ namespace Backend.Controllers.Contacts
             _contactService.AddContact(contact);
             return CreatedAtAction(nameof(GetContactById), new { id = contact.Id }, contact);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateContact(int id, Contact contact)
+        {
+            if (id != contact.Id)
+            {
+                return BadRequest();
+            }
+            _contactService.UpdateContact(contact);
+            return NoContent();
+        }
     }
 }
