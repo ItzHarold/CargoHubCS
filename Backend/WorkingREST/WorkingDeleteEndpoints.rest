@@ -1,0 +1,51 @@
+### Delete for warehouses by ID
+DELETE http://localhost:5031/api/warehouses/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for locations by ID
+DELETE http://localhost:5031/api/locations/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for transfers by ID
+DELETE http://localhost:5031/api/transfers/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for items by ID
+DELETE http://localhost:5031/api/items/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for item_lines by ID
+DELETE http://localhost:5031/api/item_lines/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for item_groups by ID
+DELETE http://localhost:5031/api/item_groups/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for item_groups by ID
+DELETE http://localhost:5031/api/item_groups/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for item_types by ID
+DELETE http://localhost:5031/api/item_types/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for inventories by ID
+DELETE http://localhost:5031/api/inventories/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for suppliers by ID
+DELETE http://localhost:5031/api/suppliers/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for orders by ID
+DELETE http://localhost:5031/api/orders/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for clients by ID
+DELETE http://localhost:5031/api/clients/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+### Delete for shipments by ID
+DELETE http://localhost:5031/api/shipments/1
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f

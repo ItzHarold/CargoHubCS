@@ -1,0 +1,259 @@
+### POST Request to add a new client
+POST http://localhost:5031/api/clients
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "name": "Jurwin",
+  "address": "10 Wijnhaven",
+  "city": "Rotterdam",
+  "zip_code": "2222JK",
+  "province": "Zuid-Holland",
+  "country": "Netherlands",
+  "contact_name": "Jurwin",
+  "contact_phone": "123-123123",
+  "contact_email": "Jurwin@Wijnhaven.com"
+}
+
+### Update an existing client entry using POST
+POST http://localhost:5031/api/clients/update
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "id": "1",
+  "name": "New Name",
+  "contact_email": "New.email@example.com",
+  "contact_phone": "+1234567890",
+  "address": "123 Sinterklaas, Rotterdam, NY",
+  "status": "active"
+}
+
+### POST Request to add a new inventory entry
+POST http://localhost:5031/api/inventories
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "item_id": "P000002",
+  "description": "Jurchad Enterprise",
+  "item_reference": "KJ9123SA",
+  "locations": [12345, 54321, 56789],
+  "total_on_hand": 200,
+  "total_expected": 150,
+  "total_ordered": 40,
+  "total_allocated": 10,
+  "total_available": 110
+}
+
+### Update an existing inventory entry using POST
+POST http://localhost:5031/api/inventories/update
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "id": "P000002",
+  "description": "Updated description for Jurchad Enterprise",
+  "item_reference": "KJ9123SA",
+  "locations": [12345, 54321, 56789],
+  "total_on_hand": 250,
+  "total_expected": 150,
+  "total_ordered": 40,
+  "total_allocated": 20,
+  "total_available": 230
+}
+
+### Add a new item
+POST http://localhost:5031/api/items
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "uid": "P001201",
+  "code": "sjQ23408K",
+  "description": "Item",
+  "short_description": "item",
+  "upc_code": "6523523427122",
+  "model_number": "44-9JeF0S",
+  "commodity_code": "Lwoak",
+  "item_line": 15,
+  "item_group": 80,
+  "item_type": 14,
+  "unit_purchase_quantity": 20,
+  "unit_order_quantity": 12,
+  "pack_order_quantity": 7,
+  "supplier_id": 79,
+  "supplier_code": "MSI902",
+  "supplier_part_number": "A-75389-mNT"
+}
+
+### Add a new location
+POST http://localhost:5031/api/locations
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "code": "C.5.2",
+  "name": "Row: C, Rack: 5, Shelf: 2"
+}
+
+### Add a new order
+POST http://localhost:5031/api/orders
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "source_id": 34,
+  "order_date": "2024-09-17T10:00:00Z",
+  "request_date": "2024-09-18T10:00:00Z",
+  "reference": "ORD00002",
+  "reference_extra": "Example reference text.",
+  "order_status": "Pending",
+  "notes": "Additional notes for the order.",
+  "shipping_notes": "Please deliver to the main office.",
+  "picking_notes": "Ensure items are picked in the correct order.",
+  "warehouse_id": 19,
+  "ship_to": null,
+  "bill_to": null,
+  "shipment_id": 2,
+  "total_amount": 1234.56,
+  "total_discount": 50.00,
+  "total_tax": 123.45,
+  "total_surcharge": 15.00,
+  "items": [
+    {
+      "item_id": "P000001",
+      "amount": 5
+    }
+  ]
+}
+
+### Add a new shipment
+POST http://localhost:5031/api/shipments
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "order_id": 2,
+  "source_id": 34,
+  "order_date": "2024-09-15",
+  "request_date": "2024-09-16",
+  "shipment_date": "2024-09-17",
+  "shipment_type": "O",
+  "shipment_status": "Shipped",
+  "notes": "New shipment with updated details.",
+  "carrier_code": "DHL",
+  "carrier_description": "DHL Express",
+  "service_code": "Standard",
+  "payment_type": "Prepaid",
+  "transfer_mode": "Air",
+  "total_package_count": 45,
+  "total_package_weight": 755.60,
+  "items": [
+    {
+      "item_id": "P000003",
+      "amount": 10
+    },
+    {
+      "item_id": "P000004",
+      "amount": 15
+    }
+  ]
+}
+
+### Add a new supplier
+POST http://localhost:5031/api/suppliers
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "code": "SUP0002",
+  "name": "Jur & Co.",
+  "address": "1234 Wijnhaven",
+  "address_extra": "",
+  "city": "Rotterdam",
+  "zip_code": "2342JK",
+  "province": "Zuid-Holland",
+  "country": "Netherlands",
+  "contact_name": "Jur",
+  "phonenumber": "01028903847",
+  "reference": "Smith-SUP0002"
+}
+
+### Add a new transfer
+POST http://localhost:5031/api/transfers
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "id": 2,
+  "reference": "TR00002",
+  "transfer_from": 1001,
+  "transfer_to": 2878,
+  "transfer_status": "Scheduled",
+  "items": [
+    {
+      "item_id": "P008945",
+      "amount": 10
+    },
+    {
+      "item_id": "P009999",
+      "amount": 5
+    }
+  ]
+}
+
+### Add a new warehouse
+POST http://localhost:5031/api/warehouses
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "code": "XK9YJ7B3",
+  "name": "Hogeschool Rotterdam",
+  "address": "Wijnhaven 107",
+  "zip": "2222 IO",
+  "city": "Rotterdam",
+  "province": "Zuid Holland",
+  "country": "NL",
+  "contact": {
+    "name": "Harold",
+    "phone": "(010) 1234567",
+    "email": "Harold.devries@example.com"
+  }
+}
+
+### Add a new item type
+POST http://localhost:5031/api/item-types
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+    "id": 0,
+    "name": "Laptop",
+    "description": "Apple Macbook"
+}
+
+### Add a new item group
+POST http://localhost:5031/api/item_groups
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+    "name": "New Category",
+    "description": "Description for new category"
+}
+
+### Add a new item line
+POST http://localhost:5031/api/item-lines
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+    "id": "IL00001",
+    "name": "Item Line",
+    "description": "Description item line",
+    "quantity": 100,
+    "price": 25.22
+}
+
