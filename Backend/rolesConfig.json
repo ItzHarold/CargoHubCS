@@ -55,7 +55,9 @@
             "DeleteContact",
             "GetAllItemGroups",
             "GetItemGroupById",
-            "AddItemGroup"
+            "AddItemGroup",
+            "UpdateItemGroup",
+            "DeleteItemGroup"
         ],
         "WarehouseManager": [
             "HealthCheck",
