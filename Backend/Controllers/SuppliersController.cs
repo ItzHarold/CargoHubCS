@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Backend.Features.Suppliers;
 
 namespace Backend.Controllers.Suppliers
 {
@@ -7,6 +8,10 @@ namespace Backend.Controllers.Suppliers
     [Route("api/[controller]")]
     public class SuppliersController : ControllerBase
     {
-
+        [HttpGet]
+        public IEnumerable<Supplier> GetAllSuppliers()
+        {
+            return new List<Supplier>();
+        }
     }
 }
