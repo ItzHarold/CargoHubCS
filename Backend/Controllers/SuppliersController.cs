@@ -27,5 +27,16 @@ namespace Backend.Controllers.Suppliers
             _supplierService.AddSupplier(supplier);
             return Ok();
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetSupplierById(int id)
+        {
+            var supplier = _supplierService.GetSupplierById(id);
+            if (supplier == null)
+            {
+                return NotFound();
+            }
+            return Ok(supplier);
+        }
     }
 }
