@@ -1,0 +1,51 @@
+### Delete for warehouses by ID
+DELETE http://localhost:3000/api/v1/warehouses/1
+api_key: a1b2c3d4e5
+
+### Delete for locations by ID
+DELETE http://localhost:3000/api/v1/locations/1
+api_key: a1b2c3d4e5
+
+### Delete for transfers by ID
+DELETE http://localhost:3000/api/v1/transfers/1
+api_key: a1b2c3d4e5
+
+### Delete for items by ID
+DELETE http://localhost:3000/api/v1/items/1
+api_key: a1b2c3d4e5
+
+### Delete for item_lines by ID
+DELETE http://localhost:3000/api/v1/item_lines/1
+api_key: a1b2c3d4e5
+
+### Delete for item_groups by ID
+DELETE http://localhost:3000/api/v1/item_groups/1
+api_key: a1b2c3d4e5
+
+### Delete for item_groups by ID
+DELETE http://localhost:3000/api/v1/item_groups/1
+api_key: a1b2c3d4e5
+
+### Delete for item_types by ID
+DELETE http://localhost:3000/api/v1/item_types/1
+api_key: a1b2c3d4e5
+
+### Delete for inventories by ID
+DELETE http://localhost:3000/api/v1/inventories/1
+api_key: a1b2c3d4e5
+
+### Delete for suppliers by ID
+DELETE http://localhost:3000/api/v1/suppliers/1
+api_key: a1b2c3d4e5
+
+### Delete for orders by ID
+DELETE http://localhost:3000/api/v1/orders/1
+api_key: a1b2c3d4e5
+
+### Delete for clients by ID
+DELETE http://localhost:3000/api/v1/clients/1
+api_key: a1b2c3d4e5
+
+### Delete for shipments by ID
+DELETE http://localhost:3000/api/v1/shipments/1
+api_key: a1b2c3d4e5
