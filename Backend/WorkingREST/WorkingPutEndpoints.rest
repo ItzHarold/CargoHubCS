@@ -136,19 +136,20 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "code": "SUP0001",
-  "name": "Harold & co.",
-  "address": "Wijhaven 10",
-  "address_extra": "10",
-  "city": "Delft",
-  "zip_code": "4857JK",
-  "province": "Zuid-Holland",
-  "country": "Netherlands",
-  "contact_name": "Harold",
-  "phonenumber": "0102345678",
-  "reference": "LPaJ-SUP0001"
+    "Id": 1,
+    "Code": "SUP0002",
+    "Name": "Updated Supplier",
+    "Address": "1234 Wijnhaven",
+    "AddressExtra": "",
+    "City": "Rotterdam",
+    "ZipCode": "2342JK",
+    "Province": "Zuid-Holland",
+    "Country": "Netherlands",
+    "ContactName": "Jur",
+    "PhoneNumber": "01028903847",
+    "Reference": "Smith-SUP0002"
 }
+
 
 ### Update an existing transfer
 PUT http://localhost:5031/api/transfers/1
