@@ -7,13 +7,18 @@ namespace Backend.Features.Contacts
     public interface IContactService
     {
         IEnumerable<Contact> GetAllContacts();
-        Contact? GetContactById(int id);
-        void AddContact(Contact contact);
-        void UpdateContact(Contact contact);
-        void DeleteContact(int id);
+        // void AddContact(Contact contact);
+        // void UpdateContact(Contact contact);
+        // void DeleteContact(int id);
     }
 
-    public class ContactService
+    public class ContactService : IContactService
     {
+        private readonly List<Contact> _contacts = new();
+
+        public IEnumerable<Contact> GetAllContacts()
+        {
+            return _contacts;
+        }
     }
 }

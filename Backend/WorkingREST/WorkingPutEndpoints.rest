@@ -1,7 +1,7 @@
 ### Update an existing item group
-PUT http://localhost:3000/api/v1/item_groups/1
+PUT http://localhost:5031/api/item_groups/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -10,9 +10,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an item
-PUT http://localhost:3000/api/v1/items/P000001
+PUT http://localhost:5031/api/items/P000001
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "uid": "P001201",
@@ -34,9 +34,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing location
-PUT http://localhost:3000/api/v1/locations/1
+PUT http://localhost:5031/api/locations/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -46,9 +46,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing order
-PUT http://localhost:3000/api/v1/orders/1
+PUT http://localhost:5031/api/orders/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -84,9 +84,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing shipment
-PUT http://localhost:3000/api/v1/shipments/1
+PUT http://localhost:5031/api/shipments/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -118,9 +118,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing supplier
-PUT http://localhost:3000/api/v1/suppliers/1
+PUT http://localhost:5031/api/suppliers/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -138,9 +138,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing transfer
-PUT http://localhost:3000/api/v1/transfers/1
+PUT http://localhost:5031/api/transfers/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -157,9 +157,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an existing warehouse
-PUT http://localhost:3000/api/v1/warehouses/1
+PUT http://localhost:5031/api/warehouses/1
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
@@ -178,9 +178,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an item type
-PUT http://localhost:3000/api/v1/item-types/{item_type_id}
+PUT http://localhost:5031/api/item-types/{item_type_id}
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
     "id": 0,
@@ -189,9 +189,9 @@ api_key: a1b2c3d4e5
 }
 
 ### Update an item line
-PUT http://localhost:3000/api/v1/item-lines/0
+PUT http://localhost:5031/api/item-lines/0
 Content-Type: application/json
-api_key: a1b2c3d4e5
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
     "id": "IL00001",
