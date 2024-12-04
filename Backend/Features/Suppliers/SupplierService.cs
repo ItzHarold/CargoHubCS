@@ -6,7 +6,7 @@ namespace Backend.Features.Suppliers
 {
     public interface ISupplierService
     {
-        // IEnumerable<Supplier> GetAllSuppliers();
+        IEnumerable<Supplier> GetAllSuppliers();
         // Supplier? GetSupplierById(int id);
         void AddSupplier(Supplier supplier);
         // void UpdateSupplier(Supplier supplier);
@@ -20,6 +20,11 @@ namespace Backend.Features.Suppliers
         public void AddSupplier(Supplier supplier)
         {
             _suppliers.Add(supplier);
+        }
+
+        public IEnumerable<Supplier> GetAllSuppliers()
+        {
+            return _suppliers;
         }
 
     }

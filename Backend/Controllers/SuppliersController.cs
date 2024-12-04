@@ -8,10 +8,24 @@ namespace Backend.Controllers.Suppliers
     [Route("api/[controller]")]
     public class SuppliersController : ControllerBase
     {
+        private readonly ISupplierService _supplierService;
+
+        public SuppliersController(ISupplierService supplierService)
+        {
+            _supplierService = supplierService;
+        }
+
         [HttpGet]
         public IEnumerable<Supplier> GetAllSuppliers()
         {
-            return new List<Supplier>();
+            return _supplierService.GetAllSuppliers();
+        }
+
+        [HttpPost]
+        public IActionResult AddSupplier([FromBody]Supplier supplier)
+        {
+            _supplierService.AddSupplier(supplier);
+            return Ok();
         }
     }
 }
