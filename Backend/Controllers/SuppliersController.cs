@@ -38,5 +38,18 @@ namespace Backend.Controllers.Suppliers
             }
             return Ok(supplier);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateSupplier(int id, [FromBody]Supplier supplier)
+        {
+            var existingSupplier = _supplierService.GetSupplierById(id);
+            if (existingSupplier == null)
+            {
+                return NotFound();
+            }
+            supplier.Id = id;
+            _supplierService.UpdateSupplier(supplier);
+            return Ok();
+        }
     }
 }
