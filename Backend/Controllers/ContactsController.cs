@@ -49,5 +49,12 @@ namespace Backend.Controllers.Contacts
             _contactService.UpdateContact(contact);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteContact(int id)
+        {
+            _contactService.DeleteContact(id);
+            return NoContent();
+        }
     }
 }
