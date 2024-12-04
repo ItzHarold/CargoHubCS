@@ -8,7 +8,7 @@ namespace Backend.Features.Transfers
     {
         IEnumerable<Transfer> GetAllTransfers();
         // Transfer? GetTransferById(int id);
-        // void AddTransfer(Transfer transfer);
+        void AddTransfer(Transfer transfer);
         // void UpdateTransfer(Transfer transfer);
         // void DeleteTransfer(int id);
     }
@@ -19,6 +19,11 @@ namespace Backend.Features.Transfers
         public IEnumerable<Transfer> GetAllTransfers()
         {
             return _transfers;
+        }
+
+        public void AddTransfer(Transfer transfer)
+        {
+            _transfers.Add(transfer);
         }
     }
 }
