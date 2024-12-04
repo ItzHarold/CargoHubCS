@@ -58,22 +58,6 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "Description": "Jurchad Enterprise"
 }
 
-### Update an existing inventory entry using POST
-POST http://localhost:5031/api/inventories/update
-Content-Type: application/json
-X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
-
-{
-  "id": 1,
-  "ItemId": "New ID",
-  "TotalOnHand": 100,
-  "TotalExpected": 50,
-  "TotalOrdered": 40,
-  "TotalAllocated": 10,
-  "TotalAvailable": 110,
-  "Description": "New Description"
-}
-
 ### Add a new item
 POST http://localhost:5031/api/items
 Content-Type: application/json
