@@ -58,7 +58,7 @@ public static class Program
         services.AddSingleton<IContactService, ContactService>();
         services.AddSingleton<ITransferService, TransferService>();
         services.AddSingleton<ILocationService, LocationService>();
-        //services.AddSingleton<IItemService, ItemService>();
+        services.AddSingleton<IItemService, ItemService>();
         //services.AddSingleton<IInventoryService, InventoryService>();
         //services.AddSingleton<IItemGroupService,ItemGroupService>();
         // services.AddSingleton<IItemLineService,ItemLineService>();
