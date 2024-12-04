@@ -51,5 +51,12 @@ namespace Backend.Controllers.Suppliers
             _supplierService.UpdateSupplier(supplier);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSupplier(int id)
+        {
+            _supplierService.DeleteSupplier(id);
+            return Ok();
+        }
     }
 }

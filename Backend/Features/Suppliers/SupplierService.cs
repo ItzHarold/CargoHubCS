@@ -10,7 +10,7 @@ namespace Backend.Features.Suppliers
         Supplier? GetSupplierById(int id);
         void AddSupplier(Supplier supplier);
         void UpdateSupplier(Supplier supplier);
-        // void DeleteSupplier(int id);
+        void DeleteSupplier(int id);
     }
 
     public class SupplierService : ISupplierService
@@ -51,6 +51,15 @@ namespace Backend.Features.Suppliers
             existingSupplier.ContactName = supplier.ContactName;
             existingSupplier.PhoneNumber = supplier.PhoneNumber;
             existingSupplier.Reference = supplier.Reference;
+        }
+
+        public void DeleteSupplier(int id)
+        {
+            var supplier = _suppliers.FirstOrDefault(s => s.Id == id);
+            if (supplier != null)
+            {
+                _suppliers.Remove(supplier);
+            }
         }
 
     }
