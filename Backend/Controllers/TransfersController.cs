@@ -26,5 +26,11 @@ namespace Backend.Controllers.Transfers
         {
             _transferService.AddTransfer(transfer);
         }
+
+        [HttpGet("{id}")]
+        public Transfer? GetTransferById(int id)
+        {
+            return _transferService.GetTransferById(id);
+        }
     }
 }
