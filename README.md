@@ -2,9 +2,17 @@
 
 A C# project for Software Construction made by Jurwin, Harold, Charlotte and Daniël.
 
-Scrum Master: Daniël
+## Steps to run the Project
+
+ 1. Run Program: dotnet run --project Backend/Backend.csproj
+ 2. Run Integration Tests: dotnet test Backend.IntegrationTests/Backend.IntegrationTests.csproj
+ 3. Run Unit Tests: dotnet test Backend.UnitTests/Backend.UnitTests.csproj
+
+
 
 ## Backend
+
+Scrum Master: Daniël
 
 The "Backend" project has three (3) main directories.
 - Controllers
