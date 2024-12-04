@@ -32,5 +32,11 @@ namespace Backend.Controllers.ItemGroupsController
             }
             return Ok(itemGroup);
         }
+
+        public IActionResult AddItemGroup(ItemGroup itemGroup)
+        {
+            _itemGroupService.AddItemGroup(itemGroup);
+            return CreatedAtAction(nameof(GetItemGroupById), new { id = itemGroup.Id }, itemGroup);
+        }
     }
 }
