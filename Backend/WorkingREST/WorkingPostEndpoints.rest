@@ -199,21 +199,11 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 2,
-  "reference": "TR00002",
-  "transfer_from": 1001,
-  "transfer_to": 2878,
-  "transfer_status": "Scheduled",
-  "items": [
-    {
-      "item_id": "P008945",
-      "amount": 10
-    },
-    {
-      "item_id": "P009999",
-      "amount": 5
-    }
-  ]
+    "Id": 1,
+    "Reference": "T00001",
+    "TransferFrom": 1,
+    "TransferTo": 2,
+    "TransferStatus": "Pending"
 }
 
 ### Add a new warehouse
