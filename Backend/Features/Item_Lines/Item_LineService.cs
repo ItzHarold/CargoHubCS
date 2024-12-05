@@ -7,7 +7,7 @@ namespace Backend.Features.ItemLines
     public interface IItemLineService
     {
         IEnumerable<ItemLine> GetAllItemLines();
-        //ItemLine? GetItemLineById(int id);
+        ItemLine? GetItemLineById(string  uid);
         void AddItemLine(ItemLine itemLine);
         //void UpdateItemLine(ItemLine itemLine);
         //void DeleteItemLine(int id);
@@ -25,6 +25,11 @@ namespace Backend.Features.ItemLines
         public void AddItemLine(ItemLine itemLine)
         {
             Context.Add(itemLine);
+        }
+
+        public ItemLine? GetItemLineById(string uid)
+        {
+            return Context.FirstOrDefault(x => x.uid == uid);
         }
     }
 }

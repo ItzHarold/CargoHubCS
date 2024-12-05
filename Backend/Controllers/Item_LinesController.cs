@@ -21,6 +21,13 @@ namespace Backend.Controllers.ItemLines
             return Ok(_service.GetAllItemLines());
         }
 
+        [HttpGet("{uid}")]
+        public IActionResult GetItemLineById(string uid)
+        {
+            var line = _service.GetItemLineById(uid);
+            return line is not null ? Ok(line) : NotFound();
+        }
+
         [HttpPost]
         public IActionResult AddItemLine([FromBody] ItemLine itemLine)
         {
