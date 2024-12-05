@@ -8,7 +8,7 @@ namespace Backend.Features.ItemLines
     {
         IEnumerable<ItemLine> GetAllItemLines();
         //ItemLine? GetItemLineById(int id);
-        //void AddItemLine(ItemLine itemLine);
+        void AddItemLine(ItemLine itemLine);
         //void UpdateItemLine(ItemLine itemLine);
         //void DeleteItemLine(int id);
     }
@@ -20,6 +20,11 @@ namespace Backend.Features.ItemLines
         public IEnumerable<ItemLine> GetAllItemLines()
         {
             return Context;
+        }
+
+        public void AddItemLine(ItemLine itemLine)
+        {
+            Context.Add(itemLine);
         }
     }
 }

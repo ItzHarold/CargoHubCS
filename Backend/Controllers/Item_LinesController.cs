@@ -20,5 +20,12 @@ namespace Backend.Controllers.ItemLines
         {
             return Ok(_service.GetAllItemLines());
         }
+
+        [HttpPost]
+        public IActionResult AddItemLine([FromBody] ItemLine itemLine)
+        {
+            _service.AddItemLine(itemLine);
+            return Ok();
+        }
     }
 }

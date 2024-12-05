@@ -60,7 +60,8 @@
             "DeleteItemGroup",
             "AddItem",
             "GetAllItems",
-            "GetItemLines"
+            "GetItemLines",
+            "AddItemLine"
         ],
         "WarehouseManager": [
             "HealthCheck",
