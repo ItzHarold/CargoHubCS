@@ -232,15 +232,13 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Add a new item line
-POST http://localhost:5031/api/item-lines
+POST http://localhost:5031/api/item_lines
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-    "id": "IL00001",
+    "uid": "IL00001",
     "name": "Item Line",
-    "description": "Description item line",
-    "quantity": 100,
-    "price": 25.22
+    "description": "Description item line"
 }
 
