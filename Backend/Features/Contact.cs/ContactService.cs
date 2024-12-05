@@ -10,7 +10,7 @@ namespace Backend.Features.Contacts
         Contact? GetContactById(int id);
         void AddContact(Contact contact);
         void UpdateContact(Contact contact);
-        // void DeleteContact(int id);
+        void DeleteContact(int id);
     }
 
     public class ContactService : IContactService
@@ -45,6 +45,15 @@ namespace Backend.Features.Contacts
                     ContactEmail = contact.ContactEmail
                 };
                 _contacts[_contacts.IndexOf(existingContact)] = updatedContact;
+            }
+        }
+
+        public void DeleteContact(int id)
+        {
+            var contact = GetContactById(id);
+            if (contact != null)
+            {
+                _contacts.Remove(contact);
             }
         }
     }
