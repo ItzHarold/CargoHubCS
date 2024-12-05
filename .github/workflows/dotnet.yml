@@ -28,13 +28,21 @@ jobs:
           echo $! > api.pid
 
       - name: Run Integration Tests
-        run: dotnet test Backend.IntegrationTests/Backend.IntegrationTests.csproj --collect:"XPlat Code Coverage" --no-restore --results-directory ./TestResults
+        run: dotnet test Backend.IntegrationTests/Backend.IntegrationTests.csproj \
+          --logger "trx;LogFileName=IntegrationTestsResults.trx" \
+          --collect:"XPlat Code Coverage" \
+          --no-restore \
+          --results-directory ./TestResults
 
       - name: Stop API After Integration Tests
         run: kill $(cat api.pid)
 
       - name: Run Unit Tests
-        run: dotnet test Backend.UnitTests/Backend.UnitTests.csproj --collect:"XPlat Code Coverage" --no-restore --results-directory ./TestResults
+        run: dotnet test Backend.UnitTests/Backend.UnitTests.csproj \
+          --logger "trx;LogFileName=UnitTestsResults.trx" \
+          --collect:"XPlat Code Coverage" \
+          --no-restore \
+          --results-directory ./TestResults
 
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
@@ -47,3 +55,11 @@ jobs:
         with:
           name: TestResults
           path: ./TestResults/coverage-html
+
+      - name: Publish Test Results
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: .NET Tests
+          path: ./TestResults/**/*.trx
+          reporter: dotnet-trx
