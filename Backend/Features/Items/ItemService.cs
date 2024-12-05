@@ -10,7 +10,7 @@ namespace Backend.Features.Items
         IEnumerable<Item> GetAllItems();
         Item? GetItemById(string uid);
         void AddItem(Item item);
-        // void UpdateItem(Item item);
+        void UpdateItem(string uid, Item item);
         void DeleteItem(string uid);
     }
 
@@ -28,6 +28,16 @@ namespace Backend.Features.Items
         public void AddItem(Item item)
         {
             Context.Add(item);
+        }
+
+        public void UpdateItem(string uid, Item item)
+        {
+            if (item.Uid != uid) return;
+
+            int index = Context.FindIndex(i => i.Uid == uid);
+            if (index == -1) return;
+
+            Context[index] = item;
         }
 
         public void DeleteItem(string uid)

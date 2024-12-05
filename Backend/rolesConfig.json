@@ -61,7 +61,8 @@
             "AddItem",
             "GetAllItems",
             "DeleteItem",
-            "GetItemById"
+            "GetItemById",
+            "UpdateItem"
         ],
         "WarehouseManager": [
             "HealthCheck",

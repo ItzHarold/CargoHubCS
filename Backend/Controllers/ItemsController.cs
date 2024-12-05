@@ -40,5 +40,12 @@ namespace Backend.Controllers.Items
             _service.DeleteItem(uid);
             return NoContent();
         }
+
+        [HttpPut("{uid}", Name = "UpdateItem")]
+        public IActionResult UpdateItem(string uid, [FromBody] Item item)
+        {
+            _service.UpdateItem(uid, item);
+            return NoContent();
+        }
     }
 }
