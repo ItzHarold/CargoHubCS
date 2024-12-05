@@ -10,7 +10,7 @@ namespace Backend.Features.ItemLines
         ItemLine? GetItemLineById(string  uid);
         void AddItemLine(ItemLine itemLine);
         //void UpdateItemLine(ItemLine itemLine);
-        //void DeleteItemLine(int id);
+        void DeleteItemLine(string uid);
     }
 
     public class ItemLineService : IItemLineService
@@ -25,6 +25,12 @@ namespace Backend.Features.ItemLines
         public void AddItemLine(ItemLine itemLine)
         {
             Context.Add(itemLine);
+        }
+
+        public void DeleteItemLine(string uid)
+        {
+            int index = Context.FindIndex(x => x.uid == uid);
+            Context.RemoveAt(index);
         }
 
         public ItemLine? GetItemLineById(string uid)

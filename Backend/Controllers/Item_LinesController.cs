@@ -34,5 +34,12 @@ namespace Backend.Controllers.ItemLines
             _service.AddItemLine(itemLine);
             return Ok();
         }
+
+        [HttpDelete("{uid}")]
+        public IActionResult DeleteItemLine(string uid)
+        {
+            _service.DeleteItemLine(uid);
+            return NoContent();
+        }
     }
 }
