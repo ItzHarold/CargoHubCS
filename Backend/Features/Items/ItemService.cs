@@ -16,19 +16,13 @@ namespace Backend.Features.Items
 
     public class ItemService : IItemService
     {
-        private readonly CargoHubDbContext _context;
+        public List<Item> Context { get; set; } = [];
 
-        public ItemService(CargoHubDbContext context)
-        {
-            _context = context;
-        }
-
-        public IEnumerable<Item> GetAllItems() => _context.Items.ToList();
+        public IEnumerable<Item> GetAllItems() => Context;
 
         public void AddItem(Item item)
         {
-            _context.Items.Add(item);
-            _context.SaveChanges();
+            Context.Add(item);
         }
     }
 }
