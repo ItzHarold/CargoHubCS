@@ -49,5 +49,12 @@ namespace Backend.Controllers.ItemGroupsController
             _itemGroupService.UpdateItemGroup(itemGroup);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteItemGroup(int id)
+        {
+            _itemGroupService.DeleteItemGroup(id);
+            return NoContent();
+        }
     }
 }
