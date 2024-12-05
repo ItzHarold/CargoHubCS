@@ -26,5 +26,12 @@ namespace Backend.Controllers.Items
         {
             return Ok(_service.GetAllItems());
         }
+
+        [HttpDelete("{uid}", Name = "DeleteItem")]
+        public IActionResult DeleteItem(string uid)
+        {
+            _service.DeleteItem(uid);
+            return NoContent();
+        }
     }
 }
