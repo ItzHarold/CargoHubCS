@@ -39,7 +39,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 
 ### Update an item
-PUT http://localhost:5031/api/items/P000001
+PUT http://localhost:5031/api/items/P001201
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
