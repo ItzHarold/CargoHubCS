@@ -38,5 +38,16 @@ namespace Backend.Controllers.ItemGroupsController
             _itemGroupService.AddItemGroup(itemGroup);
             return CreatedAtAction(nameof(GetItemGroupById), new { id = itemGroup.Id }, itemGroup);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateItemGroup(int id, ItemGroup itemGroup)
+        {
+            if (id != itemGroup.Id)
+            {
+                return BadRequest();
+            }
+            _itemGroupService.UpdateItemGroup(itemGroup);
+            return NoContent();
+        }
     }
 }

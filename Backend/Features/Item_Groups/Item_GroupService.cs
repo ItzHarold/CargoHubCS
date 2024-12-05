@@ -9,7 +9,7 @@ namespace Backend.Features.ItemGroups
         IEnumerable<ItemGroup> GetAllItemGroups();
         ItemGroup? GetItemGroupById(int id);
         void AddItemGroup(ItemGroup itemGroup);
-        // void UpdateItemGroup(ItemGroup itemGroup);
+        void UpdateItemGroup(ItemGroup itemGroup);
         // void DeleteItemGroup(int id);
     }
 
@@ -33,6 +33,20 @@ namespace Backend.Features.ItemGroups
             _itemGroups.Add(itemGroup);
         }
 
+        public void UpdateItemGroup(ItemGroup itemGroup)
+        {
+            var existingItemGroup = GetItemGroupById(itemGroup.Id);
+            if (existingItemGroup != null)
+            {
+                var updatedItemGroup = new ItemGroup
+                {
+                    Id = existingItemGroup.Id,
+                    Name = itemGroup.Name,
+                    Description = itemGroup.Description
+                };
+                _itemGroups[_itemGroups.IndexOf(existingItemGroup)] = updatedItemGroup;
+            }
+        }
 
 
     }
