@@ -7,10 +7,10 @@ namespace Backend.Features.Transfers
     public interface ITransferService
     {
         IEnumerable<Transfer> GetAllTransfers();
-        // Transfer? GetTransferById(int id);
-        // void AddTransfer(Transfer transfer);
-        // void UpdateTransfer(Transfer transfer);
-        // void DeleteTransfer(int id);
+        Transfer? GetTransferById(int id);
+        void AddTransfer(Transfer transfer);
+        void UpdateTransfer(Transfer transfer);
+        void DeleteTransfer(int id);
     }
 
     public class TransferService : ITransferService
@@ -19,6 +19,42 @@ namespace Backend.Features.Transfers
         public IEnumerable<Transfer> GetAllTransfers()
         {
             return _transfers;
+        }
+
+        public void AddTransfer(Transfer transfer)
+        {
+            _transfers.Add(transfer);
+        }
+
+        public Transfer? GetTransferById(int id)
+        {
+            return _transfers.FirstOrDefault(t => t.Id == id);
+        }
+
+        public void UpdateTransfer(Transfer transfer)
+        {
+            var existingTransfer = _transfers.FirstOrDefault(t => t.Id == transfer.Id);
+            if (existingTransfer == null)
+            {
+                return;
+            }
+
+            existingTransfer.Reference = transfer.Reference;
+            existingTransfer.TransferFrom = transfer.TransferFrom;
+            existingTransfer.TransferTo = transfer.TransferTo;
+            existingTransfer.TransferStatus = transfer.TransferStatus;
+            //Items
+        }
+
+        public void DeleteTransfer(int id)
+        {
+            var transfer = _transfers.FirstOrDefault(x => x.Id == id);
+            if (transfer == null)
+            {
+                return;
+            }
+
+            _transfers.Remove(transfer);
         }
     }
 }

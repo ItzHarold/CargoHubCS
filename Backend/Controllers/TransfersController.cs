@@ -20,5 +20,29 @@ namespace Backend.Controllers.Transfers
         {
             return _transferService.GetAllTransfers();
         }
+
+        [HttpPost]
+        public void AddTransfer([FromBody] Transfer transfer)
+        {
+            _transferService.AddTransfer(transfer);
+        }
+
+        [HttpGet("{id}")]
+        public Transfer? GetTransferById(int id)
+        {
+            return _transferService.GetTransferById(id);
+        }
+
+        [HttpPut("{id}")]
+        public void UpdateTransfer([FromBody] Transfer transfer)
+        {
+            _transferService.UpdateTransfer(transfer);
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteTransfer(int id)
+        {
+            _transferService.DeleteTransfer(id);
+        }
     }
 }

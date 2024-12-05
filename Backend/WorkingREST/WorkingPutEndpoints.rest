@@ -1,5 +1,21 @@
+### Update an existing inventory entry
+PUT http://localhost:5031/api/inventories/1
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "id": 1,
+  "ItemId": "New ID",
+  "TotalOnHand": 100,
+  "TotalExpected": 50,
+  "TotalOrdered": 40,
+  "TotalAllocated": 10,
+  "TotalAvailable": 110,
+  "Description": "New Description"
+}
+
 ### Update an existing item group
-PUT http://localhost:5031/api/item_groups/1
+PUT http://localhost:5031/api/itemgroups/1
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
@@ -136,19 +152,20 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "code": "SUP0001",
-  "name": "Harold & co.",
-  "address": "Wijhaven 10",
-  "address_extra": "10",
-  "city": "Delft",
-  "zip_code": "4857JK",
-  "province": "Zuid-Holland",
-  "country": "Netherlands",
-  "contact_name": "Harold",
-  "phonenumber": "0102345678",
-  "reference": "LPaJ-SUP0001"
+    "Id": 1,
+    "Code": "SUP0002",
+    "Name": "Updated Supplier",
+    "Address": "1234 Wijnhaven",
+    "AddressExtra": "",
+    "City": "Rotterdam",
+    "ZipCode": "2342JK",
+    "Province": "Zuid-Holland",
+    "Country": "Netherlands",
+    "ContactName": "Jur",
+    "PhoneNumber": "01028903847",
+    "Reference": "Smith-SUP0002"
 }
+
 
 ### Update an existing transfer
 PUT http://localhost:5031/api/transfers/1
@@ -156,17 +173,11 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "reference": "TR00002",
-  "transfer_from": 1001,
-  "transfer_to": 9229,
-  "transfer_status": "Completed",
-  "items": [
-    {
-      "item_id": "P007435",
-      "amount": 23
-    }
-  ]
+    "Id": 1,
+    "Reference": "T00001",
+    "TransferFrom": 1,
+    "TransferTo": 2,
+    "TransferStatus": "Succeeded"
 }
 
 ### Update an existing warehouse
