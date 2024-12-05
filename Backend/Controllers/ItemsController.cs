@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Backend.Features.Items;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers.Items
@@ -7,6 +7,24 @@ namespace Backend.Controllers.Items
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
     {
+        private readonly IItemService _service;
 
+        public ItemsController(IItemService service)
+        {
+            _service = service;
+        }
+
+        [HttpPost(Name = "AddItem")]
+        public IActionResult AddItem([FromBody] Item item)
+        {
+            _service.AddItem(item);
+            return Ok();
+        }
+
+        [HttpGet(Name = "GetAllItems")]
+        public IActionResult GetAllItems()
+        {
+            return Ok(_service.GetAllItems());
+        }
     }
 }
