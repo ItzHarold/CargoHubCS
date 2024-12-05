@@ -43,7 +43,7 @@ GET http://localhost:5031/api/items
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 ### Get for items by ID
-GET http://localhost:5031/api/items/P000001
+GET http://localhost:5031/api/items/P001201
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 ### Get for inventory in item by ID
