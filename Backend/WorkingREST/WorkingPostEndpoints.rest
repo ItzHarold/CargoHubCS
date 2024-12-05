@@ -48,32 +48,14 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "item_id": "P000002",
-  "description": "Jurchad Enterprise",
-  "item_reference": "KJ9123SA",
-  "locations": [12345, 54321, 56789],
-  "total_on_hand": 200,
-  "total_expected": 150,
-  "total_ordered": 40,
-  "total_allocated": 10,
-  "total_available": 110
-}
-
-### Update an existing inventory entry using POST
-POST http://localhost:5031/api/inventories/update
-Content-Type: application/json
-X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
-
-{
-  "id": "P000002",
-  "description": "Updated description for Jurchad Enterprise",
-  "item_reference": "KJ9123SA",
-  "locations": [12345, 54321, 56789],
-  "total_on_hand": 250,
-  "total_expected": 150,
-  "total_ordered": 40,
-  "total_allocated": 20,
-  "total_available": 230
+  "id": 1,
+  "ItemId": "P000002",
+  "TotalOnHand": 200,
+  "TotalExpected": 150,
+  "TotalOrdered": 40,
+  "TotalAllocated": 10,
+  "TotalAvailable": 110,
+  "Description": "Jurchad Enterprise"
 }
 
 ### Add a new item
