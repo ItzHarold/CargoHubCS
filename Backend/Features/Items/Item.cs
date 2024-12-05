@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Backend.Features.Items
 {
@@ -8,36 +9,47 @@ namespace Backend.Features.Items
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [JsonPropertyName("uid")]
         public required string Uid { get; set; }
 
         [Required]
+        [JsonPropertyName("code")]
         public required string Code { get; set; }
 
         [Required]
+        [JsonPropertyName("description")]
         public required string Description { get; set; }
 
-        public string? Short_Description { get; set; }
+        [JsonPropertyName("short_description")]
+        public string? ShortDescription { get; set; }
 
-        public string? Upc_Code { get; set; }
+        [JsonPropertyName("upc_code")]
+        public string? UpcCode { get; set; }
 
-        public string? Model_Number { get; set; }
+        [JsonPropertyName("model_number")]
+        public string? ModelNumber { get; set; }
 
-        public string? Commodity_Code { get; set; }
+        [JsonPropertyName("commodity_code")]
+        public string? CommodityCode { get; set; }
 
         [Required]
         [ForeignKey("ItemLine")]
-        public required int Item_Line { get; set; }
+        [JsonPropertyName("item_line")]
+        public required int ItemLine { get; set; }
 
         [Required]
         [ForeignKey("ItemGroup")]
-        public required int Item_Group { get; set; }
+        [JsonPropertyName("item_group")]
+        public required int ItemGroup { get; set; }
 
         [Required]
         [ForeignKey("ItemType")]
-        public required int Item_Type { get; set; }
+        [JsonPropertyName("item_type")]
+        public required int ItemType { get; set; }
 
         [Required]
         [ForeignKey("Supplier")]
-        public required int Supplier_Id { get; set; }
+        [JsonPropertyName("supplier_id")]
+        public required int SupplierId { get; set; }
     }
 }
