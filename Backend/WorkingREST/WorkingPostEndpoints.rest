@@ -71,7 +71,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "upc_code": "6523523427122",
   "model_number": "44-9JeF0S",
   "commodity_code": "Lwoak",
-  "item_line": 15,
+  "item_line": 1,
   "item_group": 80,
   "item_type": 14,
   "unit_purchase_quantity": 20,
@@ -237,7 +237,7 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-    "uid": "IL00001",
+    "id": 1,
     "name": "Item Line",
     "description": "Description item line"
 }

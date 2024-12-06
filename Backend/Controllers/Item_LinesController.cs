@@ -21,10 +21,10 @@ namespace Backend.Controllers.ItemLines
             return Ok(_service.GetAllItemLines());
         }
 
-        [HttpGet("{uid}")]
-        public IActionResult GetItemLineById(string uid)
+        [HttpGet("{id:int}")]
+        public IActionResult GetItemLineById(int id)
         {
-            var line = _service.GetItemLineById(uid);
+            var line = _service.GetItemLineById(id);
             return line is not null ? Ok(line) : NotFound();
         }
 
@@ -35,17 +35,17 @@ namespace Backend.Controllers.ItemLines
             return Ok();
         }
 
-        [HttpDelete("{uid}")]
-        public IActionResult DeleteItemLine(string uid)
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteItemLine(int id)
         {
-            _service.DeleteItemLine(uid);
+            _service.DeleteItemLine(id);
             return NoContent();
         }
 
-        [HttpPut("{uid}")]
-        public IActionResult UpdateItemLine(string uid, [FromBody] ItemLine itemLine)
+        [HttpPut("{id:int}")]
+        public IActionResult UpdateItemLine(int id, [FromBody] ItemLine itemLine)
         {
-            _service.UpdateItemLine(uid, itemLine);
+            _service.UpdateItemLine(id, itemLine);
             return NoContent();
         }
     }
