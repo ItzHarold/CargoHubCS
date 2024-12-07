@@ -8,7 +8,7 @@ namespace Backend.Features.ItemTypes
     {
         IEnumerable<ItemType> GetAllItemTypes();
         //ItemType? GetItemTypeById(int id);
-        //void AddItemType(ItemType itemType);
+        void AddItemType(ItemType itemType);
         //void UpdateItemType(ItemType itemType);
         //void DeleteItemType(int id);
     }
@@ -20,6 +20,11 @@ namespace Backend.Features.ItemTypes
         public IEnumerable<ItemType> GetAllItemTypes()
         {
             return Context;
+        }
+
+        public void AddItemType(ItemType itemType)
+        {
+            Context.Add(itemType);
         }
     }
 }

@@ -20,5 +20,12 @@ namespace Backend.Controllers.ItemTypes
         {
             return Ok(_itemTypeService.GetAllItemTypes());
         }
+
+        [HttpPost]
+        public IActionResult AddItemType([FromBody] ItemType itemType)
+        {
+            _itemTypeService.AddItemType(itemType);
+            return Ok(itemType);
+        }
     }
 }
