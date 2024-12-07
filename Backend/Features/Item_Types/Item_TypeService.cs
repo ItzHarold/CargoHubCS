@@ -7,7 +7,7 @@ namespace Backend.Features.ItemTypes
     public interface IItemTypeService
     {
         IEnumerable<ItemType> GetAllItemTypes();
-        //ItemType? GetItemTypeById(int id);
+        ItemType? GetItemTypeById(int id);
         void AddItemType(ItemType itemType);
         void UpdateItemType(int id, ItemType itemType);
         void DeleteItemType(int id);
@@ -20,6 +20,11 @@ namespace Backend.Features.ItemTypes
         public IEnumerable<ItemType> GetAllItemTypes()
         {
             return Context;
+        }
+
+        public ItemType? GetItemTypeById(int id)
+        {
+            return Context.FirstOrDefault(i => i.Id == id);
         }
 
         public void AddItemType(ItemType itemType)

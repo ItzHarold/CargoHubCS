@@ -21,6 +21,13 @@ namespace Backend.Controllers.ItemTypes
             return Ok(_itemTypeService.GetAllItemTypes());
         }
 
+        [HttpGet("{id:int}")]
+        public IActionResult GetItemTypeById(int id)
+        {
+            var itemType = _itemTypeService.GetItemTypeById(id);
+            return itemType is not null ? Ok(itemType) : NotFound();
+        }
+
         [HttpPost]
         public IActionResult AddItemType([FromBody] ItemType itemType)
         {
