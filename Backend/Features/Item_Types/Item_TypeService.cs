@@ -6,7 +6,7 @@ namespace Backend.Features.ItemTypes
 {
     public interface IItemTypeService
     {
-        //IEnumerable<ItemType> GetAllItemTypes();
+        IEnumerable<ItemType> GetAllItemTypes();
         //ItemType? GetItemTypeById(int id);
         //void AddItemType(ItemType itemType);
         //void UpdateItemType(ItemType itemType);
@@ -15,6 +15,11 @@ namespace Backend.Features.ItemTypes
 
     public class ItemTypeService : IItemTypeService
     {
+        public List<ItemType> Context { get; set; } = [];
 
+        public IEnumerable<ItemType> GetAllItemTypes()
+        {
+            return Context;
+        }
     }
 }
