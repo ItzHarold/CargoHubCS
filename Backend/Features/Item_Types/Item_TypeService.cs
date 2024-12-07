@@ -10,7 +10,7 @@ namespace Backend.Features.ItemTypes
         //ItemType? GetItemTypeById(int id);
         void AddItemType(ItemType itemType);
         //void UpdateItemType(ItemType itemType);
-        //void DeleteItemType(int id);
+        void DeleteItemType(int id);
     }
 
     public class ItemTypeService : IItemTypeService
@@ -25,6 +25,15 @@ namespace Backend.Features.ItemTypes
         public void AddItemType(ItemType itemType)
         {
             Context.Add(itemType);
+        }
+
+        public void DeleteItemType(int id)
+        {
+            int index = Context.FindIndex(i => i.Id == id);
+            if (index >= 0)
+            {
+                Context.RemoveAt(index);
+            }
         }
     }
 }

@@ -27,5 +27,12 @@ namespace Backend.Controllers.ItemTypes
             _itemTypeService.AddItemType(itemType);
             return Ok(itemType);
         }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult DeleteItemType(int id)
+        {
+            _itemTypeService.DeleteItemType(id);
+            return NoContent();
+        }
     }
 }
