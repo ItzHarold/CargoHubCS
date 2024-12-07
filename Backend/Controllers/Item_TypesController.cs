@@ -34,5 +34,12 @@ namespace Backend.Controllers.ItemTypes
             _itemTypeService.DeleteItemType(id);
             return NoContent();
         }
+
+        [HttpPut("{id:int}")]
+        public IActionResult UpdateItemType(int id, [FromBody] ItemType itemType)
+        {
+            _itemTypeService.UpdateItemType(id, itemType);
+            return NoContent();
+        }
     }
 }
