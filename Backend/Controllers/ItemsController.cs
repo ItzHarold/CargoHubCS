@@ -21,6 +21,13 @@ namespace Backend.Controllers.Items
             return Ok();
         }
 
+        [HttpGet("{uid}", Name = "GetItemById")]
+        public IActionResult GetItemById(string uid)
+        {
+            var item = _service.GetItemById(uid);
+            return item is not null ? Ok(item) : NotFound();
+        }
+
         [HttpGet(Name = "GetAllItems")]
         public IActionResult GetAllItems()
         {

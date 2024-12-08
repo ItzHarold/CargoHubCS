@@ -8,7 +8,7 @@ namespace Backend.Features.Items
     public interface IItemService
     {
         IEnumerable<Item> GetAllItems();
-        // Item? GetItemById(int id);
+        Item? GetItemById(string uid);
         void AddItem(Item item);
         // void UpdateItem(Item item);
         void DeleteItem(string uid);
@@ -19,6 +19,11 @@ namespace Backend.Features.Items
         public List<Item> Context { get; set; } = [];
 
         public IEnumerable<Item> GetAllItems() => Context;
+
+        public Item? GetItemById(string uid)
+        {
+            return Context.FirstOrDefault(item => item.Uid == uid);
+        }
 
         public void AddItem(Item item)
         {
