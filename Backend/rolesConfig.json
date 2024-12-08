@@ -61,6 +61,11 @@
             "AddItem",
             "GetAllItems",
             "DeleteItem"
+            "GetItemLines",
+            "AddItemLine",
+            "GetItemLineById",
+            "DeleteItemLine",
+            "UpdateItemLine"
         ],
         "WarehouseManager": [
             "HealthCheck",
