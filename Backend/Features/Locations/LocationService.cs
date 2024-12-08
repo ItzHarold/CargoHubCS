@@ -22,7 +22,7 @@ namespace Backend.Features.Locations
         }
         public void AddLocation(Location location)
         {
-
+            _locations.Add(location);
         }
 
         public void UpdateLocation(Location location)
