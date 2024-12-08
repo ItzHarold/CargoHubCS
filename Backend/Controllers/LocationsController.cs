@@ -16,10 +16,33 @@ namespace Backend.Controllers.Locations
         }
 
         [HttpGet]
-        public IActionResult GetAllClients()
+        public IEnumerable<Location> GetAllLocations()
         {
-            var locations = _locationService.GetAllLocations();
-            return Ok(locations);
+            return _locationService.GetAllLocations();
+        }
+
+        [HttpGet("{id}")]
+        public Location? GetLocationById(int id)
+        {
+            return _locationService.GetLocationById(id);
+        }
+
+        [HttpPut]
+        public void UpdateLocation([FromBody] Location location)
+        {
+            _locationService.UpdateLocation(location);
+        }
+
+        [HttpPost]
+        public void AddLocation([FromBody] Location location)
+        {
+            _locationService.AddLocation(location);
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteLocation(int id)
+        {
+            _locationService.DeleteLocation(id);
         }
     }
 }

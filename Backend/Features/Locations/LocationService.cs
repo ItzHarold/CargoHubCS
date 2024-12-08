@@ -22,20 +22,35 @@ namespace Backend.Features.Locations
         }
         public void AddLocation(Location location)
         {
-
+            _locations.Add(location);
         }
 
         public void UpdateLocation(Location location)
         {
+           var existingLocation = _locations.FirstOrDefault(l => l.Id == location.Id);
+            if (existingLocation == null)
+            {
+                return;
+            }
 
+            existingLocation.Id = location.Id;
+            existingLocation.WarehouseId = location.WarehouseId;
+            existingLocation.Code = location.Code;
+            existingLocation.Name = location.Name;
         }
         public void DeleteLocation(int id)
         {
+            var location = _locations.FirstOrDefault(l => l.Id == id);
+            if (location == null)
+            {
+                return;
+            }
 
+            _locations.Remove(location);
         }
         public Location? GetLocationById(int id)
         {
-            return null;
+            return _locations.FirstOrDefault(l => l.Id == id);
         }
 
     }
