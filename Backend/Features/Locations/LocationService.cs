@@ -22,7 +22,7 @@ namespace Backend.Features.Locations
         }
         public void AddLocation(Location location)
         {
-
+            _locations.Add(location);
         }
 
         public void UpdateLocation(Location location)
@@ -35,7 +35,7 @@ namespace Backend.Features.Locations
         }
         public Location? GetLocationById(int id)
         {
-            return null;
+            return _locations.FirstOrDefault(l => l.Id == id);
         }
 
     }

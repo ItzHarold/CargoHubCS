@@ -9,12 +9,39 @@ namespace Backend.Features.ItemLines
         IEnumerable<ItemLine> GetAllItemLines();
         ItemLine? GetItemLineById(int id);
         void AddItemLine(ItemLine itemLine);
-        void UpdateItemLine(ItemLine itemLine);
+        void UpdateItemLine(int id, ItemLine itemLine);
         void DeleteItemLine(int id);
     }
 
-    public class ItemLineService
+    public class ItemLineService : IItemLineService
     {
+        public List<ItemLine> Context { get; set; } = [];
 
+        public IEnumerable<ItemLine> GetAllItemLines()
+        {
+            return Context;
+        }
+
+        public void AddItemLine(ItemLine itemLine)
+        {
+            Context.Add(itemLine);
+        }
+
+        public void UpdateItemLine(int id, ItemLine itemLine)
+        {
+            int index = Context.FindIndex(x => x.id == id);
+            Context[index] = itemLine;
+        }
+
+        public void DeleteItemLine(int id)
+        {
+            int index = Context.FindIndex(x => x.id == id);
+            Context.RemoveAt(index);
+        }
+
+        public ItemLine? GetItemLineById(int id)
+        {
+            return Context.FirstOrDefault(x => x.id == id);
+        }
     }
 }

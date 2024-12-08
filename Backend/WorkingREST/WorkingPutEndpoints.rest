@@ -213,14 +213,12 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Update an item line
-PUT http://localhost:5031/api/item-lines/0
+PUT http://localhost:5031/api/item_lines/1
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-    "id": "IL00001",
-    "name": "New Item Line",
-    "description": "New description item line",
-    "quantity": 150,
-    "price": 30.00
+    "id": 1,
+    "name": "updated Item Line",
+    "description": "updated description item line"
 }
