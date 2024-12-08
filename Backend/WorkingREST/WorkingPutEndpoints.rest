@@ -75,41 +75,29 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Update an existing order
-PUT http://localhost:5031/api/orders/1
+PUT http://localhost:5031/api/orders
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "source_id": 33,
-  "order_date": "2019-04-03T11:33:15Z",
-  "request_date": "2019-04-07T11:33:15Z",
-  "reference": "ORD00001",
-  "reference_extra": "Reference.",
-  "order_status": "Delivered",
-  "notes": "Notities.",
-  "shipping_notes": "Shipping notes.",
-  "picking_notes": "Pick up.",
-  "warehouse_id": 18,
-  "ship_to": null,
-  "bill_to": null,
-  "shipment_id": 1,
-  "total_amount": 9905.13,
-  "total_discount": 150.77,
-  "total_tax": 372.72,
-  "total_surcharge": 77.6,
-  "created_at": "2019-04-03T11:33:15Z",
-  "updated_at": "2024-09-17T10:15:00Z",
-  "items": [
-    {
-      "item_id": "P007435",
-      "amount": 23
-    },
-    {
-      "item_id": "P009557",
-      "amount": 1
-    }
-  ]
+  "Id": 1,
+  "SourceId": 33,
+  "OrderDate": "2019-04-03T11:33:15Z",
+  "RequestDate": "2019-04-07T11:33:15Z",
+  "Reference": "ORD00001",
+  "ReferenceExtra": "Reference.",
+  "OrderStatus": "Delivered",
+  "Notes": "Changed.",
+  "ShippingNotes": "Shipping notes.",
+  "PickingNotes": "Pick up.",
+  "WarehouseId": 18,
+  "ShipTo": "Null",
+  "BillTo": "Null",
+  "ShipmentId": 1,
+  "TotalAmount": 9905.13,
+  "TotalDiscount": 150.77,
+  "TotalTax": 372.72,
+  "TotalSurcharge": 77.6
 }
 
 ### Update an existing shipment

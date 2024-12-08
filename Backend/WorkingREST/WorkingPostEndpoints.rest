@@ -98,29 +98,24 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "source_id": 34,
-  "order_date": "2024-09-17T10:00:00Z",
-  "request_date": "2024-09-18T10:00:00Z",
-  "reference": "ORD00002",
-  "reference_extra": "Example reference text.",
-  "order_status": "Pending",
-  "notes": "Additional notes for the order.",
-  "shipping_notes": "Please deliver to the main office.",
-  "picking_notes": "Ensure items are picked in the correct order.",
-  "warehouse_id": 19,
-  "ship_to": null,
-  "bill_to": null,
-  "shipment_id": 2,
-  "total_amount": 1234.56,
-  "total_discount": 50.00,
-  "total_tax": 123.45,
-  "total_surcharge": 15.00,
-  "items": [
-    {
-      "item_id": "P000001",
-      "amount": 5
-    }
-  ]
+    "Id": 1,
+    "SourceId": 34,
+    "OrderDate": "2024-09-17T10:00:00Z",
+    "RequestDate": "2024-09-18T10:00:00Z",
+    "Reference": "ORD00002",
+    "ReferenceExtra": "Example reference text.",
+    "OrderStatus": "Pending",
+    "Notes": "Additional notes for the order.",
+    "ShippingNotes": "Please deliver to the main office.",
+    "PickingNotes": "Ensure items are picked in the correct order.",
+    "WarehouseId": 19,
+    "ShipTo": "null",
+    "BillTo": "null",
+    "ShipmentId": 2,
+    "TotalAmount": 1234.56,
+    "TotalDiscount": 50.00,
+    "TotalTax": 123.45,
+    "TotalSurcharge": 15.00
 }
 
 ### Add a new shipment
