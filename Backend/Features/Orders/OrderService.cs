@@ -6,15 +6,19 @@ namespace Backend.Features.Orders
 {
     public interface IOrderService
     {
-        IEnumerable<Order> GetAllOrders();
-        Order? GetOrderById(int id);
+        // IEnumerable<Order> GetAllOrders();
+        // Order? GetOrderById(int id);
         void AddOrder(Order order);
-        void UpdateOrder(Order order);
-        void DeleteOrder(int id);
+        // void UpdateOrder(Order order);
+        // void DeleteOrder(int id);
     }
 
-    public class OrderService
+    public class OrderService: IOrderService
     {
-
+        private readonly List<Order> _orders = new();
+        public void AddOrder(Order order)
+        {
+            _orders.Add(order);
+        }
     }
 }
