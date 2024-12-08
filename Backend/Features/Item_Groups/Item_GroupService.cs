@@ -10,7 +10,7 @@ namespace Backend.Features.ItemGroups
         ItemGroup? GetItemGroupById(int id);
         void AddItemGroup(ItemGroup itemGroup);
         void UpdateItemGroup(ItemGroup itemGroup);
-        // void DeleteItemGroup(int id);
+        void DeleteItemGroup(int id);
     }
 
     public class ItemGroupService : IItemGroupService
@@ -48,6 +48,14 @@ namespace Backend.Features.ItemGroups
             }
         }
 
+        public void DeleteItemGroup(int id)
+        {
+            var itemGroup = GetItemGroupById(id);
+            if (itemGroup != null)
+            {
+                _itemGroups.Remove(itemGroup);
+            }
+        }
 
     }
 }
