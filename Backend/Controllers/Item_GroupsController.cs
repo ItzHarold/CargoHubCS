@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Backend.Controllers.ItemGroupsController
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/item_groups")]
     public class ItemGroupsController : ControllerBase
     {
         private readonly IItemGroupService _itemGroupService;
@@ -21,7 +21,7 @@ namespace Backend.Controllers.ItemGroupsController
             var itemGroups = _itemGroupService.GetAllItemGroups();
             return Ok(itemGroups);
         }
-        
+
         [HttpGet("{id}")]
         public IActionResult GetItemGroupById(int id)
         {
