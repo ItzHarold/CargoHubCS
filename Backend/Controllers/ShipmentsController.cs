@@ -20,6 +20,12 @@ namespace Backend.Controllers.Shipments
         {
             return _shipmentService.GetAllShipments();
         }
+
+        [HttpGet("{id}")]
+        public Shipment? GetShipmentById(int id)
+        {
+            return _shipmentService.GetShipmentById(id);
+        }
     }
 
 }
