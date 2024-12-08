@@ -39,5 +39,11 @@ namespace Backend.Controllers.Orders
             _orderService.UpdateOrder(order);
         }
 
+        [HttpDelete("{id}")]
+        public void DeleteOrder(int id)
+        {
+            _orderService.DeleteOrder(id);
+        }
+
     }
 }

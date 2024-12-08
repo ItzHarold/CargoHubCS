@@ -10,7 +10,7 @@ namespace Backend.Features.Orders
         Order? GetOrderById(int id);
         void AddOrder(Order order);
         void UpdateOrder(Order order);
-        // void DeleteOrder(int id);
+        void DeleteOrder(int id);
     }
 
     public class OrderService: IOrderService
@@ -55,6 +55,16 @@ namespace Backend.Features.Orders
             existingOrder.TotalDiscount = order.TotalDiscount;
             existingOrder.TotalTax = order.TotalTax;
             existingOrder.TotalSurcharge = order.TotalSurcharge;
+        }
+        public void DeleteOrder(int id)
+        {
+            var order = _orders.FirstOrDefault(o => o.Id == id);
+            if (order == null)
+            {
+                return;
+            }
+
+            _orders.Remove(order);
         }
 
     }
