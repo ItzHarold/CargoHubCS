@@ -62,13 +62,13 @@
             "GetAllItems",
             "DeleteItem",
             "GetItemById",
-            "UpdateItem"
-            "DeleteItem"
+            "UpdateItem",
+            "DeleteItem",
             "GetAllItemTypes",
             "AddItemType",
             "DeleteItemType",
             "UpdateItemType",
-            "GetItemTypeById"
+            "GetItemTypeById",
             "GetItemLines",
             "AddItemLine",
             "GetItemLineById",
