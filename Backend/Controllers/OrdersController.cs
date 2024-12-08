@@ -27,5 +27,11 @@ namespace Backend.Controllers.Orders
             return _orderService.GetAllOrders();
         }
 
+        [HttpGet("{id}")]
+        public Order? GetOrderById(int id)
+        {
+            return _orderService.GetOrderById(id);
+        }
+
     }
 }
