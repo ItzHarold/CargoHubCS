@@ -35,7 +35,7 @@ namespace Backend.Features.Locations
         }
         public Location? GetLocationById(int id)
         {
-            return null;
+            return _locations.FirstOrDefault(l => l.Id == id);
         }
 
     }
