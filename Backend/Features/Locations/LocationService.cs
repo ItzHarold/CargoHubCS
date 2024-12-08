@@ -31,7 +31,13 @@ namespace Backend.Features.Locations
         }
         public void DeleteLocation(int id)
         {
+            var location = _locations.FirstOrDefault(l => l.Id == id);
+            if (location == null)
+            {
+                return;
+            }
 
+            _locations.Remove(location);
         }
         public Location? GetLocationById(int id)
         {
