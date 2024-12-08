@@ -27,7 +27,16 @@ namespace Backend.Features.Locations
 
         public void UpdateLocation(Location location)
         {
+           var existingLocation = _locations.FirstOrDefault(l => l.Id == location.Id);
+            if (existingLocation == null)
+            {
+                return;
+            }
 
+            existingLocation.Id = location.Id;
+            existingLocation.WarehouseId = location.WarehouseId;
+            existingLocation.Code = location.Code;
+            existingLocation.Name = location.Name;
         }
         public void DeleteLocation(int id)
         {
