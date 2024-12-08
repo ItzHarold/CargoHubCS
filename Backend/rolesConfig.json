@@ -65,6 +65,11 @@
             "DeleteItemType",
             "UpdateItemType",
             "GetItemTypeById"
+            "GetItemLines",
+            "AddItemLine",
+            "GetItemLineById",
+            "DeleteItemLine",
+            "UpdateItemLine"
         ],
         "WarehouseManager": [
             "HealthCheck",
