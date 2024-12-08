@@ -7,7 +7,7 @@ namespace Backend.Features.Shipments
     public interface IShipmentService
     {
         IEnumerable<Shipment> GetAllShipments();
-        // Shipment? GetShipmentById(int id);
+        Shipment? GetShipmentById(int id);
         // void AddShipment(Shipment shipment);
         // void UpdateShipment(Shipment shipment);
         // void DeleteShipment(int id);
@@ -20,6 +20,10 @@ namespace Backend.Features.Shipments
         public IEnumerable<Shipment> GetAllShipments()
         {
             return _shipments;
+        }
+        public Shipment? GetShipmentById(int id)
+        {
+            return _shipments.FirstOrDefault(s => s.Id == id);
         }
     }
 }
