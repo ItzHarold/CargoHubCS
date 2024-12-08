@@ -21,5 +21,11 @@ namespace Backend.Controllers.Orders
             _orderService.AddOrder(order);
         }
 
+        [HttpGet]
+        public IEnumerable<Order> GetAllOrders()
+        {
+            return _orderService.GetAllOrders();
+        }
+
     }
 }
