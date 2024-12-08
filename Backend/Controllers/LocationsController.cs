@@ -32,5 +32,11 @@ namespace Backend.Controllers.Locations
         {
             _locationService.AddLocation(location);
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteLocation(int id)
+        {
+            _locationService.DeleteLocation(id);
+        }
     }
 }
