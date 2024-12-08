@@ -33,5 +33,11 @@ namespace Backend.Controllers.Orders
             return _orderService.GetOrderById(id);
         }
 
+        [HttpPut]
+        public void UpdateOrder([FromBody] Order order)
+        {
+            _orderService.UpdateOrder(order);
+        }
+
     }
 }
