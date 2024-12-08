@@ -11,7 +11,7 @@ namespace Backend.Features.Items
         // Item? GetItemById(int id);
         void AddItem(Item item);
         // void UpdateItem(Item item);
-        // void DeleteItem(int id);
+        void DeleteItem(string uid);
     }
 
     public class ItemService : IItemService
@@ -23,6 +23,15 @@ namespace Backend.Features.Items
         public void AddItem(Item item)
         {
             Context.Add(item);
+        }
+
+        public void DeleteItem(string uid)
+        {
+            foreach (var item in Context.Where(item => item.Uid == uid))
+            {
+                Context.Remove(item);
+                break;
+            }
         }
     }
 }

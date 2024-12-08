@@ -60,6 +60,7 @@
             "DeleteItemGroup",
             "AddItem",
             "GetAllItems",
+            "DeleteItem"
             "GetAllItemTypes",
             "AddItemType",
             "DeleteItemType",
