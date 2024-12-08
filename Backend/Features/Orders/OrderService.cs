@@ -6,7 +6,7 @@ namespace Backend.Features.Orders
 {
     public interface IOrderService
     {
-        // IEnumerable<Order> GetAllOrders();
+        IEnumerable<Order> GetAllOrders();
         // Order? GetOrderById(int id);
         void AddOrder(Order order);
         // void UpdateOrder(Order order);
@@ -19,6 +19,11 @@ namespace Backend.Features.Orders
         public void AddOrder(Order order)
         {
             _orders.Add(order);
+        }
+
+        public IEnumerable<Order> GetAllOrders()
+        {
+            return _orders;
         }
     }
 }
