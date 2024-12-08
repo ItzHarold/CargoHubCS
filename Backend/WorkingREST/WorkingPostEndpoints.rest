@@ -115,7 +115,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
     "TotalAmount": 1234.56,
     "TotalDiscount": 50.00,
     "TotalTax": 123.45,
-    "TotalSurcharge": 15.00,
+    "TotalSurcharge": 15.00
 }
 
 ### Add a new shipment
