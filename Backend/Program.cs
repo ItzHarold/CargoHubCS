@@ -65,8 +65,8 @@ public static class Program
         services.AddSingleton<IItemGroupService,ItemGroupService>();
         services.AddSingleton<IItemTypeService,ItemTypeService>();
         services.AddSingleton<IItemLineService,ItemLineService>();
-        // services.AddSingleton<IOrderService,OrderService>();
         services.AddSingleton<IShipmentService,ShipmentService>();
+        services.AddSingleton<IOrderService,OrderService>();
         services.AddSingleton<ISupplierService,SupplierService>();
     }
 }
