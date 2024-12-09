@@ -28,7 +28,7 @@ namespace Backend.Controllers.Clients
             var client = _clientService.GetClientById(id);
             if (client == null)
             {
-                return NotFound();
+                return NoContent();
             }
             return Ok(client);
         }
