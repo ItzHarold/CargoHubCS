@@ -9,7 +9,7 @@ namespace Backend.Features.Shipments
         IEnumerable<Shipment> GetAllShipments();
         Shipment? GetShipmentById(int id);
         void AddShipment(Shipment shipment);
-        // void UpdateShipment(Shipment shipment);
+        void UpdateShipment(Shipment shipment);
         // void DeleteShipment(int id);
     }
 
@@ -28,6 +28,32 @@ namespace Backend.Features.Shipments
         public void AddShipment(Shipment shipment)
         {
             _shipments.Add(shipment);
+        }
+        public void UpdateShipment(Shipment shipment)
+        {
+            var existingShipment = _shipments.FirstOrDefault(x => x.Id == shipment.Id);
+            if (existingShipment == null)
+            {
+                return;
+            }
+
+            existingShipment.Id = shipment.Id;
+            existingShipment.OrderId = shipment.OrderId;
+            existingShipment.SourceId = shipment.SourceId;
+            existingShipment.OrderDate = shipment.OrderDate;
+            existingShipment.RequestDate = shipment.RequestDate;
+            existingShipment.ShipmentDate = shipment.ShipmentDate;
+            existingShipment.ShipmentType = shipment.ShipmentType;
+            existingShipment.ShipmentStatus = shipment.ShipmentStatus;
+            existingShipment.Notes = shipment.Notes;
+            existingShipment.CarrierCode = shipment.CarrierCode;
+            existingShipment.CarrierDescription = shipment.CarrierDescription;
+            existingShipment.ServiceCode = shipment.ServiceCode;
+            existingShipment.PaymentType = shipment.PaymentType;
+            existingShipment.TransferMode = shipment.TransferMode;
+            existingShipment.TotalPackageCount = shipment.TotalPackageCount;
+            existingShipment.TotalPackageWeight = shipment.TotalPackageWeight;
+
         }
     }
 }
