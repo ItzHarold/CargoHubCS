@@ -28,7 +28,7 @@ namespace Backend.Controllers.Shipments
         }
 
         [HttpPost]
-        public void AddOrder([FromBody] Shipment shipment)
+        public void AddShipment([FromBody] Shipment shipment)
         {
             _shipmentService.AddShipment(shipment);
         }
@@ -36,6 +36,11 @@ namespace Backend.Controllers.Shipments
         public void UpdateShipment([FromBody] Shipment shipment)
         {
             _shipmentService.UpdateShipment(shipment);
+        }
+        [HttpDelete("{id}")]
+        public void DeleteShipment(int id)
+        {
+            _shipmentService.DeleteShipment(id);
         }
     }
 

@@ -10,7 +10,7 @@ namespace Backend.Features.Shipments
         Shipment? GetShipmentById(int id);
         void AddShipment(Shipment shipment);
         void UpdateShipment(Shipment shipment);
-        // void DeleteShipment(int id);
+        void DeleteShipment(int id);
     }
 
     public class ShipmentService: IShipmentService
@@ -31,7 +31,7 @@ namespace Backend.Features.Shipments
         }
         public void UpdateShipment(Shipment shipment)
         {
-            var existingShipment = _shipments.FirstOrDefault(x => x.Id == shipment.Id);
+            var existingShipment = _shipments.FirstOrDefault(s => s.Id == shipment.Id);
             if (existingShipment == null)
             {
                 return;
@@ -54,6 +54,16 @@ namespace Backend.Features.Shipments
             existingShipment.TotalPackageCount = shipment.TotalPackageCount;
             existingShipment.TotalPackageWeight = shipment.TotalPackageWeight;
 
+        }
+        public void DeleteShipment(int id)
+        {
+            var shipment = _shipments.FirstOrDefault(s => s.Id == id);
+            if (shipment == null)
+            {
+                return;
+            }
+
+            _shipments.Remove(shipment);
         }
     }
 }
