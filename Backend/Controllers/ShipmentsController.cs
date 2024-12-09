@@ -26,6 +26,12 @@ namespace Backend.Controllers.Shipments
         {
             return _shipmentService.GetShipmentById(id);
         }
+
+        [HttpPost]
+        public void AddOrder([FromBody] Shipment shipment)
+        {
+            _shipmentService.AddShipment(shipment);
+        }
     }
 
 }
