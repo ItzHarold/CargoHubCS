@@ -8,7 +8,7 @@ namespace Backend.Features.Shipments
     {
         IEnumerable<Shipment> GetAllShipments();
         Shipment? GetShipmentById(int id);
-        // void AddShipment(Shipment shipment);
+        void AddShipment(Shipment shipment);
         // void UpdateShipment(Shipment shipment);
         // void DeleteShipment(int id);
     }
@@ -24,6 +24,10 @@ namespace Backend.Features.Shipments
         public Shipment? GetShipmentById(int id)
         {
             return _shipments.FirstOrDefault(s => s.Id == id);
+        }
+        public void AddShipment(Shipment shipment)
+        {
+            _shipments.Add(shipment);
         }
     }
 }
