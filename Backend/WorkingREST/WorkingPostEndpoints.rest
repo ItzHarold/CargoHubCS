@@ -123,32 +123,23 @@ POST http://localhost:5031/api/shipments
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
-{
-  "order_id": 2,
-  "source_id": 34,
-  "order_date": "2024-09-15",
-  "request_date": "2024-09-16",
-  "shipment_date": "2024-09-17",
-  "shipment_type": "O",
-  "shipment_status": "Shipped",
-  "notes": "New shipment with updated details.",
-  "carrier_code": "DHL",
-  "carrier_description": "DHL Express",
-  "service_code": "Standard",
-  "payment_type": "Prepaid",
-  "transfer_mode": "Air",
-  "total_package_count": 45,
-  "total_package_weight": 755.60,
-  "items": [
     {
-      "item_id": "P000003",
-      "amount": 10
-    },
-    {
-      "item_id": "P000004",
-      "amount": 15
-    }
-  ]
+    "Id": 1,
+    "OrderId": 2,
+    "SourceId": 34,
+    "OrderDate": "2024-09-15",
+    "RequestDate": "2024-09-16",
+    "ShipmentDate": "2024-09-17",
+    "ShipmentType": "O",
+    "ShipmentStatus": "Shipped",
+    "Notes": "New shipment with updated details.",
+    "CarrierCode": "DHL",
+    "CarrierDescription": "DHL Express",
+    "ServiceCode": "Standard",
+    "PaymentType": "Prepaid",
+    "TransferMode": "Air",
+    "TotalPackageCount": 45,
+    "TotalPackageWeight": 755.60
 }
 
 ### Add a new supplier

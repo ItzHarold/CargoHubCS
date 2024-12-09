@@ -101,37 +101,27 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Update an existing shipment
-PUT http://localhost:5031/api/shipments/1
+PUT http://localhost:5031/api/shipments
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "order_id": 1,
-  "source_id": 33,
-  "order_date": "2000-03-09",
-  "request_date": "2000-03-11",
-  "shipment_date": "2000-03-13",
-  "shipment_type": "I",
-  "shipment_status": "Pending",
-  "notes": "Updated notes.",
-  "carrier_code": "DPD",
-  "carrier_description": "Description",
-  "service_code": "Fastest",
-  "payment_type": "Manual",
-  "transfer_mode": "Ground",
-  "total_package_count": 31,
-  "total_package_weight": 594.42,
-  "items": [
-    {
-      "item_id": "P007435",
-      "amount": 23
-    },
-    {
-      "item_id": "P009557",
-      "amount": 1
-    }
-  ]
+  "Id": 1,
+  "OrderId": 1,
+  "SourceId": 33,
+  "OrderDate": "2000-03-09",
+  "RequestDate": "2000-03-11",
+  "ShipmentDate": "2000-03-13",
+  "ShipmentType": "I",
+  "ShipmentStatus": "Pending",
+  "Notes": "Updated notes.",
+  "CarrierCode": "DPD",
+  "CarrierDescription": "Description",
+  "ServiceCode": "Fastest",
+  "PaymentType": "Manual",
+  "TransferMode": "Ground",
+  "TotalPackageCount": 31,
+  "TotalPackageWeight": 594.42
 }
 
 ### Update an existing supplier
