@@ -32,6 +32,11 @@ namespace Backend.Controllers.Shipments
         {
             _shipmentService.AddShipment(shipment);
         }
+        [HttpPut]
+        public void UpdateShipment([FromBody] Shipment shipment)
+        {
+            _shipmentService.UpdateShipment(shipment);
+        }
     }
 
 }
