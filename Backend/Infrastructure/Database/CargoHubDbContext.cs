@@ -22,7 +22,7 @@ public class CargoHubDbContext(DbContextOptions<CargoHubDbContext> options) : Db
     public virtual DbSet<ItemGroup>? ItemGroups { get; set; }
     public virtual DbSet<ItemLine>? ItemLines { get; set; }
     public virtual DbSet<ItemType>? ItemTypes { get; set; }
-    public virtual DbSet<Item> Items { get; set; }
+    public virtual DbSet<Item>? Items { get; set; }
     public virtual DbSet<Location>? Locations { get; set; }
     public virtual DbSet<Order>? Orders { get; set; }
     public virtual DbSet<Shipment>? Shipments { get; set; }

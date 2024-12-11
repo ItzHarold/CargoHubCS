@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Backend.Features.Items;
 
 namespace Backend.Features.Transfers
 {
@@ -22,5 +23,8 @@ namespace Backend.Features.Transfers
 
         [Required]
         public required string TransferStatus { get; set; }
+
+        [Required]
+        public  required List<Item> Items { get; set; }
     }
 }
