@@ -50,6 +50,14 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 {
   "id": 1,
   "ItemId": "P000002",
+  "Locations": [
+    {
+      "Id": 1,
+      "WarehouseId": 2,
+      "Code": "P00002",
+      "Name": "Almere"
+    }
+  ],
   "TotalOnHand": 200,
   "TotalExpected": 150,
   "TotalOrdered": 40,

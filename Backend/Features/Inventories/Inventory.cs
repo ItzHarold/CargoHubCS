@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Backend.Features.Locations;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Backend.Features.Inventories
 {
@@ -12,6 +14,9 @@ namespace Backend.Features.Inventories
 
         [Required]
         [ForeignKey("Items")] public required string ItemId { get; set; }
+
+        [Required]
+        public required List<Location> Locations { get; set;}
 
         [Required]
         public required int TotalOnHand { get; set; }

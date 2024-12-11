@@ -41,6 +41,7 @@ namespace Backend.Features.Inventories
                 {
                     Id = existingInventory.Id,
                     ItemId = existingInventory.ItemId,
+                    Locations = existingInventory.Locations,
                     TotalOnHand = inventory.TotalOnHand,
                     TotalExpected = inventory.TotalExpected,
                     TotalOrdered = inventory.TotalOrdered,
