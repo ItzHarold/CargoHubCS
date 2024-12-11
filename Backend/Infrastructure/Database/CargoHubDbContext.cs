@@ -18,19 +18,19 @@ namespace Backend.Infrastructure.Database;
 
 public class CargoHubDbContext(DbContextOptions<CargoHubDbContext> options) : DbContext(options)
 {
-    public virtual DbSet<Client> Clients { get; set; }
-    public virtual DbSet<Contact> Contacts { get; set; }
-    public virtual DbSet<Inventory> Inventories { get; set; }
-    public virtual DbSet<ItemGroup> ItemGroups { get; set; }
-    public virtual DbSet<ItemLine> ItemLines { get; set; }
-    public virtual DbSet<ItemType> ItemTypes { get; set; }
-    public virtual DbSet<Item> Items { get; set; }
-    public virtual DbSet<Location> Locations { get; set; }
-    public virtual DbSet<Order> Orders { get; set; }
-    public virtual DbSet<Shipment> Shipments { get; set; }
-    public virtual DbSet<Supplier> Suppliers { get; set; }
-    public virtual DbSet<Transfer> Transfers { get; set; }
-    public virtual DbSet<Warehouse> Warehouses { get; set; }
+    public virtual DbSet<Client>? Clients { get; set; }
+    public virtual DbSet<Contact>? Contacts { get; set; }
+    public virtual DbSet<Inventory>? Inventories { get; set; }
+    public virtual DbSet<ItemGroup>? ItemGroups { get; set; }
+    public virtual DbSet<ItemLine>? ItemLines { get; set; }
+    public virtual DbSet<ItemType>? ItemTypes { get; set; }
+    public virtual DbSet<Item>? Items { get; set; }
+    public virtual DbSet<Location>? Locations { get; set; }
+    public virtual DbSet<Order>? Orders { get; set; }
+    public virtual DbSet<Shipment>? Shipments { get; set; }
+    public virtual DbSet<Supplier>? Suppliers { get; set; }
+    public virtual DbSet<Transfer>? Transfers { get; set; }
+    public virtual DbSet<Warehouse>? Warehouses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

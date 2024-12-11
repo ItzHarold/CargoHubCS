@@ -1,3 +1,22 @@
+### Update an existing Client
+
+PUT http://localhost:5031/api/clients/1
+Content-Type: application/json
+X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
+
+{
+  "Id": 1,
+  "Name": "Test Update",
+  "Address": "123 Sinterklaas, Rotterdam, NY",
+  "City": "Rotterdam",
+  "ZipCode": "1234AB",
+  "Province": "Zuid-Holland",
+  "Country": "Netherlands",
+  "ContactName": "Charlotte",
+  "ContactPhone": "+1234567890",
+  "ContactEmail": "charlotte@gmail.com"
+}
+
 ### Update an existing inventory entry
 PUT http://localhost:5031/api/inventories/1
 Content-Type: application/json

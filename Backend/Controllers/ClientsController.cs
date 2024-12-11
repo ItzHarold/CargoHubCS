@@ -48,14 +48,14 @@ namespace Backend.Controllers.Clients
                 return BadRequest();
             }
             _clientService.UpdateClient(client);
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteClient(int id)
         {
             _clientService.DeleteClient(id);
-            return NoContent();
+            return Ok();
         }
     }
 }

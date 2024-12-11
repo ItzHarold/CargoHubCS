@@ -58,18 +58,18 @@ public static class Program
         services.AddLogging();
         services.AddControllers();
 
-        services.AddSingleton<IClientService, ClientService>();
-        services.AddSingleton<IWarehouseService, WarehouseService>();
-        services.AddSingleton<IContactService, ContactService>();
-        services.AddSingleton<ITransferService, TransferService>();
-        services.AddSingleton<ILocationService, LocationService>();
-        services.AddSingleton<IItemService, ItemService>();
-        services.AddSingleton<IInventoryService, InventoryService>();
-        services.AddSingleton<IItemGroupService,ItemGroupService>();
-        services.AddSingleton<IItemTypeService,ItemTypeService>();
-        services.AddSingleton<IItemLineService,ItemLineService>();
-        services.AddSingleton<IShipmentService,ShipmentService>();
-        services.AddSingleton<IOrderService,OrderService>();
-        services.AddSingleton<ISupplierService,SupplierService>();
+        services.AddTransient<IClientService, ClientService>();
+        services.AddTransient<IWarehouseService, WarehouseService>();
+        services.AddTransient<IContactService, ContactService>();
+        services.AddTransient<ITransferService, TransferService>();
+        services.AddTransient<ILocationService, LocationService>();
+        services.AddTransient<IItemService, ItemService>();
+        services.AddTransient<IInventoryService, InventoryService>();
+        services.AddTransient<IItemGroupService,ItemGroupService>();
+        services.AddTransient<IItemTypeService,ItemTypeService>();
+        services.AddTransient<IItemLineService,ItemLineService>();
+        services.AddTransient<IShipmentService,ShipmentService>();
+        services.AddTransient<IOrderService,OrderService>();
+        services.AddTransient<ISupplierService,SupplierService>();
     }
 }
