@@ -26,6 +26,9 @@ public static class Program
 
         builder.Configuration.AddJsonFile("rolesConfig.json", optional: false, reloadOnChange: true);
 
+        builder.Services.AddDbContext<CargoHubDbContext>(options =>
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
         ConfigureServices(builder.Services);
 
         var app = builder.Build();
