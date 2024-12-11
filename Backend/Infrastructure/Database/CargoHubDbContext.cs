@@ -1,5 +1,6 @@
 using Backend.Features;
 using Backend.Features.Clients;
+using Backend.Features.Contacts;
 using Backend.Features.Inventories;
 using Backend.Features.ItemGroups;
 using Backend.Features.ItemLines;
@@ -18,6 +19,7 @@ namespace Backend.Infrastructure.Database;
 public class CargoHubDbContext(DbContextOptions<CargoHubDbContext> options) : DbContext(options)
 {
     public virtual DbSet<Client>? Clients { get; set; }
+    public virtual DbSet<Contact>? Contacts { get; set; }
     public virtual DbSet<Inventory>? Inventories { get; set; }
     public virtual DbSet<ItemGroup>? ItemGroups { get; set; }
     public virtual DbSet<ItemLine>? ItemLines { get; set; }
