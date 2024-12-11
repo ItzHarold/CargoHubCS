@@ -16,30 +16,16 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
     "ContactEmail": "charlotte@gmail.com"
 }
 
-### Update an existing client entry using POST
-POST http://localhost:5031/api/clients/update
-Content-Type: application/json
-X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
-
-{
-  "id": "1",
-  "name": "New Name",
-  "contact_email": "New.email@example.com",
-  "contact_phone": "+1234567890",
-  "address": "123 Sinterklaas, Rotterdam, NY",
-  "status": "active"
-}
-
 ### POST Request to add a new contact
 POST http://localhost:5031/api/contacts
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": "1",
-  "contactName": "Charlotte",
-  "contactPhone": "123123123",
-  "contactEmail": "test@test.nl"
+  "Id": "1",
+  "ContactName": "Charlotte",
+  "ContactPhone": "123123123",
+  "ContactEmail": "test@test.nl"
 
 }
 

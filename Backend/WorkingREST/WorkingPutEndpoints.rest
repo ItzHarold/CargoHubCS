@@ -50,10 +50,10 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "contactName": "Harold",
-  "contactPhone": "1234456786",
-  "contactEmail": "asld@ajsd.nl"
+  "Id": "1",
+  "ContactName": "Updated Name",
+  "ContactPhone": "123123123",
+  "ContactEmail": "test@test.nl"
 }
 
 

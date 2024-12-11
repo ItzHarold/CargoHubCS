@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.Contacts
 {
@@ -15,45 +16,45 @@ namespace Backend.Features.Contacts
 
     public class ContactService : IContactService
     {
-        private readonly List<Contact> _contacts = new();
+        private readonly CargoHubDbContext _dbContext;
+
+        public ContactService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<Contact> GetAllContacts()
         {
-            return _contacts;
+            if (_dbContext.Contacts != null)
+            {
+                return _dbContext.Contacts.ToList();
+            }
+            return new List<Contact>();
         }
 
         public Contact? GetContactById(int id)
         {
-            return _contacts.FirstOrDefault(c => c.Id == id);
+            return _dbContext.Contacts?.Find(id);
         }
 
         public void AddContact(Contact contact)
         {
-            contact.Id = _contacts.Count > 0 ? _contacts.Max(c => c.Id) + 1 : 1;
-            _contacts.Add(contact);
+            _dbContext.Contacts?.Add(contact);
+            _dbContext.SaveChanges();
         }
         public void UpdateContact(Contact contact)
         {
-            var existingContact = GetContactById(contact.Id);
-            if (existingContact != null)
-            {
-                var updatedContact = new Contact
-                {
-                    Id = existingContact.Id,
-                    ContactName = contact.ContactName,
-                    ContactPhone = contact.ContactPhone,
-                    ContactEmail = contact.ContactEmail
-                };
-                _contacts[_contacts.IndexOf(existingContact)] = updatedContact;
-            }
+            _dbContext.Contacts?.Update(contact);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteContact(int id)
         {
-            var contact = GetContactById(id);
+            var contact = _dbContext.Contacts?.Find(id);
             if (contact != null)
             {
-                _contacts.Remove(contact);
+                _dbContext.Contacts?.Remove(contact);
+                _dbContext.SaveChanges();
             }
         }
     }
