@@ -53,6 +53,7 @@ namespace Backend.Features.Shipments
             existingShipment.TransferMode = shipment.TransferMode;
             existingShipment.TotalPackageCount = shipment.TotalPackageCount;
             existingShipment.TotalPackageWeight = shipment.TotalPackageWeight;
+            existingShipment.Items = shipment.Items;
 
         }
         public void DeleteShipment(int id)

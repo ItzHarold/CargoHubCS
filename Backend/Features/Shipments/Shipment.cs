@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Backend.Features.Items;
 
 namespace Backend.Features.Shipments
 {
@@ -54,6 +55,9 @@ namespace Backend.Features.Shipments
 
         [Required]
         public required decimal TotalPackageWeight { get; set; }
+
+        [Required]
+        public required List<Item> Items { get; set; }
 
     }
 }
