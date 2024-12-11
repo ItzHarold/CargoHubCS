@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.ItemLines
 {
@@ -15,33 +16,46 @@ namespace Backend.Features.ItemLines
 
     public class ItemLineService : IItemLineService
     {
-        public List<ItemLine> Context { get; set; } = [];
+        private readonly CargoHubDbContext _dbContext;
+        public ItemLineService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<ItemLine> GetAllItemLines()
         {
-            return Context;
+            if (_dbContext.ItemLines != null)
+            {
+                return _dbContext.ItemLines.ToList();
+            }
+            return new List<ItemLine>();
         }
 
         public void AddItemLine(ItemLine itemLine)
         {
-            Context.Add(itemLine);
+            _dbContext.ItemLines?.Add(itemLine);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateItemLine(int id, ItemLine itemLine)
         {
-            int index = Context.FindIndex(x => x.id == id);
-            Context[index] = itemLine;
+            _dbContext.ItemLines?.Update(itemLine);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteItemLine(int id)
         {
-            int index = Context.FindIndex(x => x.id == id);
-            Context.RemoveAt(index);
+            var itemLine = _dbContext.Inventories?.FirstOrDefault(c => c.Id == id);
+            if (itemLine != null)
+            {
+                _dbContext.Inventories?.Remove(itemLine);
+                _dbContext.SaveChanges();
+            }
         }
 
         public ItemLine? GetItemLineById(int id)
         {
-            return Context.FirstOrDefault(x => x.id == id);
+            return _dbContext.ItemLines?.Find(id);
         }
     }
 }
