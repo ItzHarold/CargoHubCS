@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.Inventories
 {
@@ -15,49 +16,45 @@ namespace Backend.Features.Inventories
 
     public class InventoryService : IInventoryService
     {
-        private readonly List<Inventory> _inventories = new();
+        private readonly CargoHubDbContext _dbContext;
+
+        public InventoryService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<Inventory> GetAllInventories()
         {
-            return _inventories;
+            if (_dbContext.Inventories != null)
+            {
+                return _dbContext.Inventories.ToList();
+            }
+            return new List<Inventory>();
         }
         public Inventory? GetInventoryById(int id)
         {
-            return _inventories.FirstOrDefault(c => c.Id == id);
+            return _dbContext.Inventories?.Find(id);
         }
 
         public void AddInventory(Inventory inventory)
         {
-            inventory.Id = _inventories.Count > 0 ? _inventories.Max(c => c.Id) + 1 : 1;
-            _inventories.Add(inventory);
+            _dbContext.Inventories?.Add(inventory);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateInventory(Inventory inventory)
         {
-            var existingInventory = GetInventoryById(inventory.Id);
-            if (existingInventory != null)
-            {
-                var updatedInventory = new Inventory
-                {
-                    Id = existingInventory.Id,
-                    ItemId = existingInventory.ItemId,
-                    TotalOnHand = inventory.TotalOnHand,
-                    TotalExpected = inventory.TotalExpected,
-                    TotalOrdered = inventory.TotalOrdered,
-                    TotalAllocated = inventory.TotalAllocated,
-                    TotalAvailable = inventory.TotalAvailable,
-                    Description = inventory.Description
-                };
-                _inventories[_inventories.IndexOf(existingInventory)] = updatedInventory;
-            }
+            _dbContext.Inventories?.Update(inventory);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteInventory(int id)
         {
-            var inventory = GetInventoryById(id);
+            var inventory = _dbContext.Inventories?.FirstOrDefault(c => c.Id == id);
             if (inventory != null)
             {
-                _inventories.Remove(inventory);
+                _dbContext.Inventories?.Remove(inventory);
+                _dbContext.SaveChanges();
             }
         }
     }

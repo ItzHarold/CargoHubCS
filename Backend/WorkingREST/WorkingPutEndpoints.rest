@@ -30,7 +30,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "TotalOrdered": 40,
   "TotalAllocated": 10,
   "TotalAvailable": 110,
-  "Description": "New Description"
+  "Description": "Updated Description"
 }
 
 ### Update an existing item group
