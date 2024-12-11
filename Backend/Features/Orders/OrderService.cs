@@ -55,6 +55,7 @@ namespace Backend.Features.Orders
             existingOrder.TotalDiscount = order.TotalDiscount;
             existingOrder.TotalTax = order.TotalTax;
             existingOrder.TotalSurcharge = order.TotalSurcharge;
+            existingOrder.Items = order.Items;
         }
         public void DeleteOrder(int id)
         {

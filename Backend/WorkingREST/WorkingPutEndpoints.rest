@@ -85,7 +85,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "OrderDate": "2019-04-03T11:33:15Z",
   "RequestDate": "2019-04-07T11:33:15Z",
   "Reference": "ORD00001",
-  "ReferenceExtra": "Reference.",
+  "ReferenceExtra": "Updated.",
   "OrderStatus": "Delivered",
   "Notes": "Changed.",
   "ShippingNotes": "Shipping notes.",
@@ -97,7 +97,22 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "TotalAmount": 9905.13,
   "TotalDiscount": 150.77,
   "TotalTax": 372.72,
-  "TotalSurcharge": 77.6
+  "TotalSurcharge": 77.6,
+    "Items": [
+        {
+            "Uid": "P00001",
+            "Code": "P00001",
+            "Description": "Product 1",
+            "ShortDescription": "Prod 1",
+            "UpcCode": "123456789012",
+            "ModelNumber": "123456",
+            "CommodityCode": "123456",
+            "ItemLine": 1,
+            "ItemGroup": 1,
+            "ItemType": 1,
+            "SupplierId": 1
+        }
+    ]
 }
 
 ### Update an existing shipment
