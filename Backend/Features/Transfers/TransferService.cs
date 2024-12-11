@@ -43,7 +43,7 @@ namespace Backend.Features.Transfers
             existingTransfer.TransferFrom = transfer.TransferFrom;
             existingTransfer.TransferTo = transfer.TransferTo;
             existingTransfer.TransferStatus = transfer.TransferStatus;
-            //Items
+            existingTransfer.Items = transfer.Items;
         }
 
         public void DeleteTransfer(int id)
