@@ -34,13 +34,13 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Update an existing item group
-PUT http://localhost:5031/api/itemgroups/1
+PUT http://localhost:5031/api/item_groups/1
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
   "id": 1,
-  "name": "New Name",
+  "name": "Updated Name",
   "description": "Updated description for the category"
 }
 
@@ -214,7 +214,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Update an item type
-PUT http://localhost:5031/api/item-types/{item_type_id}
+PUT http://localhost:5031/api/item_types/1
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
