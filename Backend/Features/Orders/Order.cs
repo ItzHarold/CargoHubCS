@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Backend.Features.Items;
 
 namespace Backend.Features.Orders
 {
@@ -57,5 +58,7 @@ namespace Backend.Features.Orders
         public decimal? TotalTax { get; set; }
 
         public decimal? TotalSurcharge { get; set; }
+
+        public required List<Item> Items { get; set; }
     }
 }
