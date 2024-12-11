@@ -22,8 +22,8 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "Id": "1",
-  "ContactName": "Charlotte",
+  "Id": "3",
+  "ContactName": "Daniel",
   "ContactPhone": "123123123",
   "ContactEmail": "test@test.nl"
 
@@ -75,8 +75,10 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "code": "C.5.2",
-  "name": "Row: C, Rack: 5, Shelf: 2"
+  "Id": 1,
+  "WarehouseId": 1,
+  "Code": "XK9YJ7B3",
+  "Name": "Hogeschool Rotterdam"
 }
 
 ### Add a new order
@@ -213,18 +215,15 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "code": "XK9YJ7B3",
-  "name": "Hogeschool Rotterdam",
-  "address": "Wijnhaven 107",
-  "zip": "2222 IO",
-  "city": "Rotterdam",
-  "province": "Zuid Holland",
-  "country": "NL",
-  "contact": {
-    "name": "Harold",
-    "phone": "(010) 1234567",
-    "email": "Harold.devries@example.com"
-  }
+  "Id": 2,
+  "Code": "XK9YJ7B3",
+  "Name": "Hogeschool Rotterdam",
+  "Address": "Wijnhaven 107",
+  "Zip": "2222 IO",
+  "City": "Rotterdam",
+  "Province": "Zuid Holland",
+  "Country": "NL",
+  "Contacts": [2, 3]
 }
 
 ### Add a new item type

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.Locations
 {
@@ -15,42 +16,42 @@ namespace Backend.Features.Locations
 
     public class LocationService : ILocationService
     {
-        private readonly List<Location> _locations = new();
+        private readonly CargoHubDbContext _dbContext;
+        public LocationService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IEnumerable<Location> GetAllLocations()
         {
-            return _locations;
+            if (_dbContext.Locations != null)
+            {
+                return _dbContext.Locations.ToList();
+            }
+            return new List<Location>();
         }
         public void AddLocation(Location location)
         {
-            _locations.Add(location);
+            _dbContext.Locations?.Add(location);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateLocation(Location location)
         {
-           var existingLocation = _locations.FirstOrDefault(l => l.Id == location.Id);
-            if (existingLocation == null)
-            {
-                return;
-            }
-
-            existingLocation.Id = location.Id;
-            existingLocation.WarehouseId = location.WarehouseId;
-            existingLocation.Code = location.Code;
-            existingLocation.Name = location.Name;
+            _dbContext.Locations?.Update(location);
+            _dbContext.SaveChanges();
         }
         public void DeleteLocation(int id)
         {
-            var location = _locations.FirstOrDefault(l => l.Id == id);
-            if (location == null)
+            var location = _dbContext.Locations?.FirstOrDefault(l => l.Id == id);
+            if (location != null)
             {
-                return;
+                _dbContext.Locations?.Remove(location);
+                _dbContext.SaveChanges();
             }
-
-            _locations.Remove(location);
         }
         public Location? GetLocationById(int id)
         {
-            return _locations.FirstOrDefault(l => l.Id == id);
+            return _dbContext.Locations?.FirstOrDefault(l => l.Id == id);
         }
 
     }

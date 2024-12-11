@@ -33,6 +33,6 @@ namespace Backend.Features.Warehouses
         public required string Country { get; set; }
 
         [Required]
-        public required Contact[] Contacts { get; set; }
+        public required int[] Contacts { get; set; }
     }
 }

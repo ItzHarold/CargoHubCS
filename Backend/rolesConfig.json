@@ -73,7 +73,12 @@
             "AddItemLine",
             "GetItemLineById",
             "DeleteItemLine",
-            "UpdateItemLine"
+            "UpdateItemLine",
+            "GetAllLocations",
+            "GetLocationById",
+            "UpdateLocation",
+            "AddLocation",
+            "DeleteLocation"
         ],
         "WarehouseManager": [
             "HealthCheck",

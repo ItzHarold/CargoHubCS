@@ -87,10 +87,10 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
-  "warehouse_id": 1,
-  "code": "Z.5.1",
-  "name": "Row: Z, Rack: 5, Shelf: 1"
+  "Id": 1,
+  "WarehouseId": 1,
+  "Code": "Z.5.1",
+  "Name": "Test Update"
 }
 
 ### Update an existing order
