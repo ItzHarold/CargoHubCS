@@ -121,15 +121,15 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
         {
             "Uid": "P00001",
             "Code": "P00001",
-            "Description": "Product 1",
+            "Description": "Updated 1",
             "ShortDescription": "Prod 1",
             "UpcCode": "123456789012",
             "ModelNumber": "123456",
             "CommodityCode": "123456",
-            "ItemLine": 1,
-            "ItemGroup": 1,
-            "ItemType": 1,
-            "SupplierId": 1
+            "item_line": 1,
+            "item_group": 1,
+            "item_type": 1,
+            "supplier_id": 1
         }
     ]
 }
