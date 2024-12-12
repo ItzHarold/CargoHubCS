@@ -140,7 +140,7 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "Id": 1,
+  "Id": 4,
   "OrderId": 1,
   "SourceId": 33,
   "OrderDate": "2000-03-09",
@@ -155,7 +155,8 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
   "PaymentType": "Manual",
   "TransferMode": "Ground",
   "TotalPackageCount": 31,
-  "TotalPackageWeight": 594.42
+  "TotalPackageWeight": 594.42,
+    "Items": ["P00000"]
 }
 
 ### Update an existing supplier

@@ -57,7 +57,7 @@ namespace Backend.Features.Shipments
         public required decimal TotalPackageWeight { get; set; }
 
         [Required]
-        public required List<Item> Items { get; set; }
-
+        public required List<string> Items { get; set; }
+        //Changed the model to contain UUID of items instead of the entire object
     }
 }

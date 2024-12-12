@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Shipments
 {
@@ -15,56 +17,80 @@ namespace Backend.Features.Shipments
 
     public class ShipmentService: IShipmentService
     {
-        private readonly List<Shipment> _shipments = new();
+        private readonly CargoHubDbContext _dbContext;
+
+        public ShipmentService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<Shipment> GetAllShipments()
         {
-            return _shipments;
+            if (_dbContext.Shipments != null)
+            {
+                return _dbContext.Shipments.ToList();
+            }
+            return new List<Shipment>();
         }
         public Shipment? GetShipmentById(int id)
         {
-            return _shipments.FirstOrDefault(s => s.Id == id);
+            return _dbContext.Shipments?.FirstOrDefault(s => s.Id == id);
         }
         public void AddShipment(Shipment shipment)
         {
-            _shipments.Add(shipment);
+            _dbContext.Shipments?.Add(shipment);
+            _dbContext.SaveChanges();
         }
         public void UpdateShipment(Shipment shipment)
         {
-            var existingShipment = _shipments.FirstOrDefault(s => s.Id == shipment.Id);
-            if (existingShipment == null)
+            if (_dbContext.Shipments != null)
             {
-                return;
+                var existingShipment = _dbContext.Shipments
+                    .FirstOrDefault(s => s.Id == shipment.Id);
+
+                if (existingShipment != null)
+                {
+                    // Update shipment properties
+                    _dbContext.Entry(existingShipment).CurrentValues.SetValues(shipment);
+
+                    // Validate and add new items
+                    foreach (var itemUuid in shipment.Items)
+                    {
+                        var existingItem = _dbContext.Items?.FirstOrDefault(i => i.Uid == itemUuid);
+                        if (existingItem == null)
+                        {
+                            throw new InvalidOperationException($"Item with UUID {itemUuid} does not exist.");
+                        }
+                        if (!existingShipment.Items.Contains(itemUuid))
+                        {
+                            existingShipment.Items.Add(itemUuid);
+                        }
+                    }
+
+                    // Remove items that are no longer in the shipment
+                    var itemsToRemove = existingShipment.Items.Where(i => !shipment.Items.Contains(i)).ToList();
+                    foreach (var itemToRemove in itemsToRemove)
+                    {
+                        existingShipment.Items.Remove(itemToRemove);
+                    }
+
+                    _dbContext.SaveChanges();
+                }
             }
-
-            existingShipment.Id = shipment.Id;
-            existingShipment.OrderId = shipment.OrderId;
-            existingShipment.SourceId = shipment.SourceId;
-            existingShipment.OrderDate = shipment.OrderDate;
-            existingShipment.RequestDate = shipment.RequestDate;
-            existingShipment.ShipmentDate = shipment.ShipmentDate;
-            existingShipment.ShipmentType = shipment.ShipmentType;
-            existingShipment.ShipmentStatus = shipment.ShipmentStatus;
-            existingShipment.Notes = shipment.Notes;
-            existingShipment.CarrierCode = shipment.CarrierCode;
-            existingShipment.CarrierDescription = shipment.CarrierDescription;
-            existingShipment.ServiceCode = shipment.ServiceCode;
-            existingShipment.PaymentType = shipment.PaymentType;
-            existingShipment.TransferMode = shipment.TransferMode;
-            existingShipment.TotalPackageCount = shipment.TotalPackageCount;
-            existingShipment.TotalPackageWeight = shipment.TotalPackageWeight;
-            existingShipment.Items = shipment.Items;
-
         }
         public void DeleteShipment(int id)
         {
-            var shipment = _shipments.FirstOrDefault(s => s.Id == id);
-            if (shipment == null)
+            if (_dbContext.Shipments != null)
             {
-                return;
-            }
+                var shipment = _dbContext.Shipments
+                    .FirstOrDefault(s => s.Id == id);
 
-            _shipments.Remove(shipment);
+                if (shipment != null)
+                {
+                    _dbContext.Shipments?.Remove(shipment);
+                    _dbContext.SaveChanges();
+                }
+            }
         }
     }
 }

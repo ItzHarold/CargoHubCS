@@ -128,7 +128,7 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
     {
-    "Id": 1,
+    "Id": 4,
     "OrderId": 2,
     "SourceId": 34,
     "OrderDate": "2024-09-15",
@@ -144,21 +144,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
     "TransferMode": "Air",
     "TotalPackageCount": 45,
     "TotalPackageWeight": 755.60,
-    "Items": [
-        {
-            "Uid": "P00001",
-            "Code": "P00001",
-            "Description": "Product 1",
-            "ShortDescription": "Prod 1",
-            "UpcCode": "123456789012",
-            "ModelNumber": "123456",
-            "CommodityCode": "123456",
-            "ItemLine": 1,
-            "ItemGroup": 1,
-            "ItemType": 1,
-            "SupplierId": 1
-        }
-    ]
+    "Items": ["P00001"]
 }
 
 ### Add a new supplier
