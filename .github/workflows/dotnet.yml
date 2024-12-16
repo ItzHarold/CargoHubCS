@@ -7,7 +7,7 @@ on:
     branches: [ "main", "development" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: self-hosted
 
     steps:
@@ -24,6 +24,22 @@ jobs:
       - name: Build
         run: dotnet build --configuration Debug --no-restore
 
+      
+  
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+      
       - name: Start API for Integration Tests
         run: |
           dotnet run --project Backend/Backend.csproj --urls "http://localhost:5031" &
@@ -49,33 +65,34 @@ jobs:
         with:
           name: TestResults
           path: ./TestResults/coverage-html
+          
 
-  deploy:
-    runs-on: self-hosted
-    needs: build-and-test  # Ensures this job only runs if build-and-test is successful
+  # deploy:
+  #   runs-on: self-hosted
+  #   needs: build
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
       
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
+  #     - name: Setup .NET
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: 8.0.x
 
-      - name: Restore dependencies
-        run: dotnet restore
+  #     - name: Restore dependencies
+  #       run: dotnet restore
 
-      - name: Publish Application
-        run: dotnet publish Backend/Backend.csproj -c Release -o ./publish
+  #     - name: Publish Application
+  #       run: dotnet publish Backend/Backend.csproj -c Release -o ./publish
 
-      - name: Deploy to Server
-        run: |
-          echo "Deploying application..."
-          # Example: Use rsync, scp, or other deployment tools to transfer files to your server
-          # scp -r ./publish/* user@server:/path/to/deploy/
-          echo "Deployment complete."
+  #     - name: Deploy to Server
+  #       run: |
+  #         echo "Deploying application..."
+  #         # Example: Use rsync, scp, or other deployment tools to transfer files to your server
+  #         # scp -r ./publish/* user@server:/path/to/deploy/
+  #         echo "Deployment complete."
 
-      - name: Post-Deployment Validation
-        run: |
-          echo "Validating deployment..."
-          # Add deployment validation commands, e.g., call the API or run a health check.
+  #     - name: Post-Deployment Validation
+  #       run: |
+  #         echo "Validating deployment..."
+  #         # Add deployment validation commands, e.g., call the API or run a health check.
