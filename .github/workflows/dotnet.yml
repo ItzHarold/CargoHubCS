@@ -1,4 +1,5 @@
 name: .NET
+
 on:
   push:
     branches: [ "main", "development" ]
@@ -11,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -47,3 +49,33 @@ jobs:
         with:
           name: TestResults
           path: ./TestResults/coverage-html
+
+  deploy:
+    runs-on: self-hosted
+    needs: build-and-test  # Ensures this job only runs if build-and-test is successful
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Publish Application
+        run: dotnet publish Backend/Backend.csproj -c Release -o ./publish
+
+      - name: Deploy to Server
+        run: |
+          echo "Deploying application..."
+          # Example: Use rsync, scp, or other deployment tools to transfer files to your server
+          # scp -r ./publish/* user@server:/path/to/deploy/
+          echo "Deployment complete."
+
+      - name: Post-Deployment Validation
+        run: |
+          echo "Validating deployment..."
+          # Add deployment validation commands, e.g., call the API or run a health check.
