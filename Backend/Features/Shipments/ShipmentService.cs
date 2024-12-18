@@ -45,37 +45,8 @@ namespace Backend.Features.Shipments
         {
             if (_dbContext.Shipments != null)
             {
-                var existingShipment = _dbContext.Shipments
-                    .FirstOrDefault(s => s.Id == shipment.Id);
-
-                if (existingShipment != null)
-                {
-                    // Update shipment properties
-                    _dbContext.Entry(existingShipment).CurrentValues.SetValues(shipment);
-
-                    // Validate and add new items
-                    foreach (var itemUuid in shipment.Items)
-                    {
-                        var existingItem = _dbContext.Items?.FirstOrDefault(i => i.Uid == itemUuid);
-                        if (existingItem == null)
-                        {
-                            throw new InvalidOperationException($"Item with UUID {itemUuid} does not exist.");
-                        }
-                        if (!existingShipment.Items.Contains(itemUuid))
-                        {
-                            existingShipment.Items.Add(itemUuid);
-                        }
-                    }
-
-                    // Remove items that are no longer in the shipment
-                    var itemsToRemove = existingShipment.Items.Where(i => !shipment.Items.Contains(i)).ToList();
-                    foreach (var itemToRemove in itemsToRemove)
-                    {
-                        existingShipment.Items.Remove(itemToRemove);
-                    }
-
-                    _dbContext.SaveChanges();
-                }
+                _dbContext.Shipments.Update(shipment);
+                _dbContext.SaveChanges();
             }
         }
         public void DeleteShipment(int id)
