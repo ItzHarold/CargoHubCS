@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.Suppliers
 {
@@ -15,50 +16,51 @@ namespace Backend.Features.Suppliers
 
     public class SupplierService : ISupplierService
     {
-        private readonly List<Supplier> _suppliers = new();
+        private readonly CargoHubDbContext _dbContext;
+
+        public SupplierService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public void AddSupplier(Supplier supplier)
         {
-            _suppliers.Add(supplier);
+            supplier.CreatedAt = DateTime.Now;
+            _dbContext.Suppliers?.Add(supplier);
+            _dbContext.SaveChanges();
         }
 
         public IEnumerable<Supplier> GetAllSuppliers()
         {
-            return _suppliers;
+            if (_dbContext.Suppliers != null)
+            {
+                return _dbContext.Suppliers.ToList();
+            }
+            return new List<Supplier>();
         }
 
         public Supplier? GetSupplierById(int id)
         {
-            return _suppliers.FirstOrDefault(s => s.Id == id);
+            return _dbContext.Suppliers?.FirstOrDefault(s => s.Id == id);
         }
 
         public void UpdateSupplier(Supplier supplier)
         {
-            var existingSupplier = _suppliers.FirstOrDefault(s => s.Id == supplier.Id);
-            if (existingSupplier == null)
-            {
-                return;
-            }
-
-            existingSupplier.Code = supplier.Code;
-            existingSupplier.Name = supplier.Name;
-            existingSupplier.Address = supplier.Address;
-            existingSupplier.AddressExtra = supplier.AddressExtra;
-            existingSupplier.City = supplier.City;
-            existingSupplier.ZipCode = supplier.ZipCode;
-            existingSupplier.Province = supplier.Province;
-            existingSupplier.Country = supplier.Country;
-            existingSupplier.ContactName = supplier.ContactName;
-            existingSupplier.PhoneNumber = supplier.PhoneNumber;
-            existingSupplier.Reference = supplier.Reference;
+            supplier.UpdatedAt = DateTime.Now;
+            _dbContext.Suppliers?.Update(supplier);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteSupplier(int id)
         {
-            var supplier = _suppliers.FirstOrDefault(s => s.Id == id);
-            if (supplier != null)
+            if (_dbContext.Suppliers != null)
             {
-                _suppliers.Remove(supplier);
+                var supplier = _dbContext.Suppliers.FirstOrDefault(s => s.Id == id);
+                if (supplier != null)
+                {
+                    _dbContext.Suppliers.Remove(supplier);
+                    _dbContext.SaveChanges();
+                }
             }
         }
 

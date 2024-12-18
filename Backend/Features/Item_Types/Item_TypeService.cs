@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.ItemTypes
 {
@@ -15,37 +16,47 @@ namespace Backend.Features.ItemTypes
 
     public class ItemTypeService : IItemTypeService
     {
-        public List<ItemType> Context { get; set; } = [];
+        private readonly CargoHubDbContext _dbContext;
+        public ItemTypeService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<ItemType> GetAllItemTypes()
         {
-            return Context;
+            if (_dbContext.ItemTypes != null)
+            {
+                return _dbContext.ItemTypes.ToList();
+            }
+            return new List<ItemType>();
         }
 
         public ItemType? GetItemTypeById(int id)
         {
-            return Context.FirstOrDefault(i => i.Id == id);
+            return _dbContext.ItemTypes?.Find(id);
         }
 
         public void AddItemType(ItemType itemType)
         {
-            Context.Add(itemType);
+            itemType.CreatedAt = DateTime.Now;
+            _dbContext.ItemTypes?.Add(itemType);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateItemType(int id, ItemType itemType)
         {
-            if (id != itemType.Id) return;
-
-            int index = Context.FindIndex(i => i.Id == id);
-            Context[index] = itemType;
+            itemType.UpdatedAt = DateTime.Now;
+            _dbContext.ItemTypes?.Update(itemType);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteItemType(int id)
         {
-            int index = Context.FindIndex(i => i.Id == id);
-            if (index >= 0)
+            var itemType = _dbContext.ItemTypes?.FirstOrDefault(c => c.Id == id);
+            if (itemType != null)
             {
-                Context.RemoveAt(index);
+                _dbContext.ItemTypes?.Remove(itemType);
+                _dbContext.SaveChanges();
             }
         }
     }

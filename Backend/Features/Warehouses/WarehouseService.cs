@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Warehouses
 {
@@ -15,51 +17,49 @@ namespace Backend.Features.Warehouses
 
     public class WarehouseService : IWarehouseService
     {
-        private readonly List<Warehouse> _warehouses = new();
+        private readonly CargoHubDbContext _dbContext;
+        public WarehouseService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<Warehouse> GetAllWarehouses()
         {
-            return _warehouses;
+            if (_dbContext.Warehouses != null)
+            {
+                return _dbContext.Warehouses.ToList();
+            }
+            return new List<Warehouse>();
         }
 
         public Warehouse? GetWarehouseById(int id)
         {
-            return _warehouses.FirstOrDefault(x => x.Id == id);
+            return _dbContext.Warehouses?.Find(id);
         }
 
         public void AddWarehouse(Warehouse warehouse)
         {
-            _warehouses.Add(warehouse);
+            warehouse.CreatedAt = DateTime.Now;
+            _dbContext.Warehouses?.Add(warehouse);
+            _dbContext.SaveChanges();
         }
+
 
         public void UpdateWarehouse(Warehouse warehouse)
         {
-            var existingWarehouse = _warehouses.FirstOrDefault(x => x.Id == warehouse.Id);
-            if (existingWarehouse == null)
-            {
-                return;
-            }
-
-            existingWarehouse.Id = warehouse.Id;
-            existingWarehouse.Code = warehouse.Code;
-            existingWarehouse.Name = warehouse.Name;
-            existingWarehouse.Address = warehouse.Address;
-            existingWarehouse.Zip = warehouse.Zip;
-            existingWarehouse.City = warehouse.City;
-            existingWarehouse.Province = warehouse.Province;
-            existingWarehouse.Country = warehouse.Country;
-            existingWarehouse.Contacts = warehouse.Contacts;
+            warehouse.UpdatedAt = DateTime.Now;
+            _dbContext.Warehouses?.Update(warehouse);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteWarehouse(int id)
         {
-            var warehouse = _warehouses.FirstOrDefault(x => x.Id == id);
-            if (warehouse == null)
+            var warehouse = _dbContext.Warehouses?.Find(id);
+            if (warehouse != null)
             {
-                return;
+                _dbContext.Warehouses?.Remove(warehouse);
+                _dbContext.SaveChanges();
             }
-
-            _warehouses.Remove(warehouse);
         }
     }
 }

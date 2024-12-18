@@ -27,7 +27,7 @@ namespace Backend.Controllers.Locations
             return _locationService.GetLocationById(id);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public void UpdateLocation([FromBody] Location location)
         {
             _locationService.UpdateLocation(location);

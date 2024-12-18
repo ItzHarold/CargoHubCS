@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Transfers
 {
@@ -15,46 +17,53 @@ namespace Backend.Features.Transfers
 
     public class TransferService : ITransferService
     {
-        private readonly List<Transfer> _transfers = new();
+        private readonly CargoHubDbContext _dbContext;
+        public TransferService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IEnumerable<Transfer> GetAllTransfers()
         {
-            return _transfers;
+            if (_dbContext.Transfers != null)
+            {
+                return _dbContext.Transfers.ToList();
+            }
+            return new List<Transfer>();
         }
 
         public void AddTransfer(Transfer transfer)
         {
-            _transfers.Add(transfer);
+            transfer.CreatedAt = DateTime.Now;
+            if (transfer.TransferFrom == null)
+            {
+                transfer.TransferFrom = transfer.TransferTo;
+                transfer.TransferTo = null;
+            }
+
+            _dbContext.Transfers?.Add(transfer);
+            _dbContext.SaveChanges();
         }
 
         public Transfer? GetTransferById(int id)
         {
-            return _transfers.FirstOrDefault(t => t.Id == id);
+            return _dbContext.Transfers?.Find(id);
         }
 
         public void UpdateTransfer(Transfer transfer)
         {
-            var existingTransfer = _transfers.FirstOrDefault(t => t.Id == transfer.Id);
-            if (existingTransfer == null)
-            {
-                return;
-            }
-
-            existingTransfer.Reference = transfer.Reference;
-            existingTransfer.TransferFrom = transfer.TransferFrom;
-            existingTransfer.TransferTo = transfer.TransferTo;
-            existingTransfer.TransferStatus = transfer.TransferStatus;
-            existingTransfer.Items = transfer.Items;
+            transfer.UpdatedAt = DateTime.Now;
+            _dbContext.Transfers?.Update(transfer);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteTransfer(int id)
         {
-            var transfer = _transfers.FirstOrDefault(x => x.Id == id);
-            if (transfer == null)
+            var transfer = _dbContext.Transfers?.Find(id);
+            if (transfer != null)
             {
-                return;
+                _dbContext.Transfers?.Remove(transfer);
+                _dbContext.SaveChanges();
             }
-
-            _transfers.Remove(transfer);
         }
     }
 }

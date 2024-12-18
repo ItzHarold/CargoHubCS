@@ -4,29 +4,16 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "name": "Jurwin",
-  "address": "10 Wijnhaven",
-  "city": "Rotterdam",
-  "zip_code": "2222JK",
-  "province": "Zuid-Holland",
-  "country": "Netherlands",
-  "contact_name": "Jurwin",
-  "contact_phone": "123-123123",
-  "contact_email": "Jurwin@Wijnhaven.com"
-}
-
-### Update an existing client entry using POST
-POST http://localhost:5031/api/clients/update
-Content-Type: application/json
-X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
-
-{
-  "id": "1",
-  "name": "New Name",
-  "contact_email": "New.email@example.com",
-  "contact_phone": "+1234567890",
-  "address": "123 Sinterklaas, Rotterdam, NY",
-  "status": "active"
+  "Id": 1,
+  "Name": "Test Company",
+  "Address": "123 Sinterklaas, Rotterdam, NY",
+  "City": "Rotterdam",
+  "ZipCode": "1234AB",
+  "Province": "Zuid-Holland",
+  "Country": "Netherlands",
+  "ContactName": "Charlotte",
+  "ContactPhone": "+1234567890",
+    "ContactEmail": "charlotte@gmail.com"
 }
 
 ### POST Request to add a new contact
@@ -35,10 +22,10 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": "1",
-  "contactName": "Charlotte",
-  "contactPhone": "123123123",
-  "contactEmail": "test@test.nl"
+  "Id": "3",
+  "ContactName": "Daniel",
+  "ContactPhone": "123123123",
+  "ContactEmail": "test@test.nl"
 
 }
 
@@ -48,7 +35,7 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "id": 1,
+  "Id": 1,
   "ItemId": "P000002",
   "TotalOnHand": 200,
   "TotalExpected": 150,
@@ -88,8 +75,10 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "code": "C.5.2",
-  "name": "Row: C, Rack: 5, Shelf: 2"
+  "Id": 1,
+  "WarehouseId": 1,
+  "Code": "XK9YJ7B3",
+  "Name": "Hogeschool Rotterdam"
 }
 
 ### Add a new order
@@ -125,10 +114,10 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
             "UpcCode": "123456789012",
             "ModelNumber": "123456",
             "CommodityCode": "123456",
-            "ItemLine": 1,
-            "ItemGroup": 1,
-            "ItemType": 1,
-            "SupplierId": 1
+            "item_line": 1,
+            "item_group": 1,
+            "item_type": 1,
+            "supplier_id": 1
         }
     ]
 }
@@ -139,7 +128,7 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
     {
-    "Id": 1,
+    "Id": 4,
     "OrderId": 2,
     "SourceId": 34,
     "OrderDate": "2024-09-15",
@@ -155,21 +144,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
     "TransferMode": "Air",
     "TotalPackageCount": 45,
     "TotalPackageWeight": 755.60,
-    "Items": [
-        {
-            "Uid": "P00001",
-            "Code": "P00001",
-            "Description": "Product 1",
-            "ShortDescription": "Prod 1",
-            "UpcCode": "123456789012",
-            "ModelNumber": "123456",
-            "CommodityCode": "123456",
-            "ItemLine": 1,
-            "ItemGroup": 1,
-            "ItemType": 1,
-            "SupplierId": 1
-        }
-    ]
+    "Items": ["P00001"]
 }
 
 ### Add a new supplier
@@ -226,18 +201,15 @@ Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 
 {
-  "code": "XK9YJ7B3",
-  "name": "Hogeschool Rotterdam",
-  "address": "Wijnhaven 107",
-  "zip": "2222 IO",
-  "city": "Rotterdam",
-  "province": "Zuid Holland",
-  "country": "NL",
-  "contact": {
-    "name": "Harold",
-    "phone": "(010) 1234567",
-    "email": "Harold.devries@example.com"
-  }
+  "Id": 2,
+  "Code": "XK9YJ7B3",
+  "Name": "Hogeschool Rotterdam",
+  "Address": "Wijnhaven 107",
+  "Zip": "2222 IO",
+  "City": "Rotterdam",
+  "Province": "Zuid Holland",
+  "Country": "NL",
+  "Contacts": [2, 3]
 }
 
 ### Add a new item type
@@ -252,7 +224,7 @@ X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 }
 
 ### Add a new item group
-POST http://localhost:5031/api/itemgroups
+POST http://localhost:5031/api/item_groups
 Content-Type: application/json
 X-API-KEY: 3f5e8b9c-2d4a-4b6a-8f3e-1a2b3c4d5e6f
 

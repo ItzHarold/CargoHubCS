@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
 
 namespace Backend.Features.ItemGroups
 {
@@ -15,45 +16,48 @@ namespace Backend.Features.ItemGroups
 
     public class ItemGroupService : IItemGroupService
     {
-        private readonly List<ItemGroup> _itemGroups = new();
+        private readonly CargoHubDbContext _dbContext;
+
+        public ItemGroupService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<ItemGroup> GetAllItemGroups()
         {
-            return _itemGroups;
+            if (_dbContext.ItemGroups != null)
+            {
+                return _dbContext.ItemGroups.ToList();
+            }
+            return new List<ItemGroup>();
         }
 
         public ItemGroup? GetItemGroupById(int id)
         {
-            return _itemGroups.FirstOrDefault(c => c.Id == id);
+            return _dbContext.ItemGroups?.Find(id);
         }
 
         public void AddItemGroup(ItemGroup itemGroup)
         {
-            itemGroup.Id = _itemGroups.Count > 0 ? _itemGroups.Max(c => c.Id) + 1 : 1;
-            _itemGroups.Add(itemGroup);
+            itemGroup.CreatedAt = DateTime.Now;
+            _dbContext.ItemGroups?.Add(itemGroup);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateItemGroup(ItemGroup itemGroup)
         {
-            var existingItemGroup = GetItemGroupById(itemGroup.Id);
-            if (existingItemGroup != null)
-            {
-                var updatedItemGroup = new ItemGroup
-                {
-                    Id = existingItemGroup.Id,
-                    Name = itemGroup.Name,
-                    Description = itemGroup.Description
-                };
-                _itemGroups[_itemGroups.IndexOf(existingItemGroup)] = updatedItemGroup;
-            }
+            itemGroup.UpdatedAt = DateTime.Now;
+            _dbContext.ItemGroups?.Update(itemGroup);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteItemGroup(int id)
         {
-            var itemGroup = GetItemGroupById(id);
+            var itemGroup = _dbContext.Inventories?.FirstOrDefault(c => c.Id == id);
             if (itemGroup != null)
             {
-                _itemGroups.Remove(itemGroup);
+                _dbContext.Inventories?.Remove(itemGroup);
+                _dbContext.SaveChanges();
             }
         }
 

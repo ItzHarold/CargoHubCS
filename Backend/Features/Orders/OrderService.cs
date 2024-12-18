@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Orders
 {
@@ -15,57 +17,52 @@ namespace Backend.Features.Orders
 
     public class OrderService: IOrderService
     {
-        private readonly List<Order> _orders = new();
+        private readonly CargoHubDbContext _dbContext;
+        public OrderService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public void AddOrder(Order order)
         {
-            _orders.Add(order);
+            order.CreatedAt = DateTime.Now;
+            _dbContext.Orders?.Add(order);
+            _dbContext.SaveChanges();
         }
 
         public IEnumerable<Order> GetAllOrders()
         {
-            return _orders;
+            if (_dbContext.Orders != null)
+            {
+                return _dbContext.Orders.ToList();
+            }
+            return new List<Order>();
         }
         public Order? GetOrderById(int id)
         {
-            return _orders.FirstOrDefault(o => o.Id == id);
+            return _dbContext.Orders?.FirstOrDefault(o => o.Id == id);
         }
         public void UpdateOrder(Order order)
         {
-            var existingOrder = _orders.FirstOrDefault(o => o.Id == order.Id);
-            if (existingOrder == null)
-            {
-                return;
-            }
-
-            existingOrder.Id = order.Id;
-            existingOrder.SourceId = order.SourceId;
-            existingOrder.OrderDate = order.OrderDate;
-            existingOrder.RequestDate = order.RequestDate;
-            existingOrder.Reference = order.Reference;
-            existingOrder.ReferenceExtra = order.ReferenceExtra;
-            existingOrder.OrderStatus = order.OrderStatus;
-            existingOrder.Notes = order.Notes;
-            existingOrder.ShippingNotes = order.ShippingNotes;
-            existingOrder.PickingNotes = order.PickingNotes;
-            existingOrder.WarehouseId = order.WarehouseId;
-            existingOrder.ShipTo = order.ShipTo;
-            existingOrder.BillTo = order.BillTo;
-            existingOrder.ShipmentId = order.ShipmentId;
-            existingOrder.TotalAmount = order.TotalAmount;
-            existingOrder.TotalDiscount = order.TotalDiscount;
-            existingOrder.TotalTax = order.TotalTax;
-            existingOrder.TotalSurcharge = order.TotalSurcharge;
-            existingOrder.Items = order.Items;
+            order.UpdatedAt = DateTime.Now;
+            _dbContext.Orders?.Update(order);
+            _dbContext.SaveChanges();
         }
         public void DeleteOrder(int id)
         {
-            var order = _orders.FirstOrDefault(o => o.Id == id);
-            if (order == null)
-            {
-                return;
-            }
+            var order = _dbContext.Orders
+                ?.Include(o => o.Items)
+                .FirstOrDefault(o => o.Id == id);
 
-            _orders.Remove(order);
+            if (order != null)
+            {
+                if (order.Items != null)
+                {
+                    _dbContext.Items?.RemoveRange(order.Items);
+                }
+
+                _dbContext.Orders?.Remove(order);
+                _dbContext.SaveChanges();
+            }
         }
 
     }

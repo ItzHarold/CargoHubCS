@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
+using Backend.Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Features.Clients
 {
@@ -15,53 +17,50 @@ namespace Backend.Features.Clients
 
     public class ClientService : IClientService
     {
-        private readonly List<Client> _clients = new();
+        private readonly CargoHubDbContext _dbContext;
+
+        public ClientService(CargoHubDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
 
         public IEnumerable<Client> GetAllClients()
         {
-            return _clients;
+            if (_dbContext.Clients != null)
+            {
+                return _dbContext.Clients.ToList();
+            }
+            return new List<Client>();
         }
 
         public Client? GetClientById(int id)
         {
-            return _clients.FirstOrDefault(c => c.Id == id);
+            return _dbContext.Clients?.Find(id);
         }
 
         public void AddClient(Client client)
         {
-            client.Id = _clients.Count > 0 ? _clients.Max(c => c.Id) + 1 : 1;
-            _clients.Add(client);
+            client.CreatedAt = DateTime.Now;
+            _dbContext.Clients?.Add(client);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateClient(Client client)
         {
-            var existingClient = GetClientById(client.Id);
-            if (existingClient != null)
-            {
-                var updatedClient = new Client
-                {
-                    Id = existingClient.Id,
-                    Name = client.Name,
-                    Address = client.Address,
-                    City = client.City,
-                    ZipCode = client.ZipCode,
-                    Province = client.Province,
-                    Country = client.Country,
-                    ContactName = client.ContactName,
-                    ContactPhone = client.ContactPhone,
-                    ContactEmail = client.ContactEmail
-                };
-                _clients[_clients.IndexOf(existingClient)] = updatedClient;
-            }
+            client.UpdatedAt = DateTime.Now;
+            _dbContext.Clients?.Update(client);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteClient(int id)
         {
-            var client = GetClientById(id);
+            var client = _dbContext.Clients?.Find(id);
             if (client != null)
             {
-                _clients.Remove(client);
+                _dbContext.Clients?.Remove(client);
+                _dbContext.SaveChanges();
             }
+
         }
     }
 }
