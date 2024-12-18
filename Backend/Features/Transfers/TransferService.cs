@@ -34,6 +34,12 @@ namespace Backend.Features.Transfers
         public void AddTransfer(Transfer transfer)
         {
             transfer.CreatedAt = DateTime.Now;
+            if (transfer.TransferFrom == null)
+            {
+                transfer.TransferFrom = transfer.TransferTo;
+                transfer.TransferTo = null;
+            }
+
             _dbContext.Transfers?.Add(transfer);
             _dbContext.SaveChanges();
         }

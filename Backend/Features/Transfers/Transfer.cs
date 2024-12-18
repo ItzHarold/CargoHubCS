@@ -21,10 +21,9 @@ namespace Backend.Features.Transfers
         [JsonPropertyName("transfer_from")]
         public int? TransferFrom { get; set; }
 
-        [Required]
         [ForeignKey("WarehouseTo")]
         [JsonPropertyName("transfer_to")]
-        public required int TransferTo { get; set; }
+        public int? TransferTo { get; set; }
 
         [JsonPropertyName("transfer_status")]
         public string? TransferStatus { get; set; }
