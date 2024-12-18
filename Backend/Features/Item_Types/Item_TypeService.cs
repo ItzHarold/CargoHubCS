@@ -38,12 +38,14 @@ namespace Backend.Features.ItemTypes
 
         public void AddItemType(ItemType itemType)
         {
+            itemType.CreatedAt = DateTime.Now;
             _dbContext.ItemTypes?.Add(itemType);
             _dbContext.SaveChanges();
         }
 
         public void UpdateItemType(int id, ItemType itemType)
         {
+            itemType.UpdatedAt = DateTime.Now;
             _dbContext.ItemTypes?.Update(itemType);
             _dbContext.SaveChanges();
         }

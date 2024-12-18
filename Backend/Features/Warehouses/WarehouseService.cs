@@ -39,6 +39,7 @@ namespace Backend.Features.Warehouses
 
         public void AddWarehouse(Warehouse warehouse)
         {
+            warehouse.CreatedAt = DateTime.Now;
             _dbContext.Warehouses?.Add(warehouse);
             _dbContext.SaveChanges();
         }
@@ -46,6 +47,7 @@ namespace Backend.Features.Warehouses
 
         public void UpdateWarehouse(Warehouse warehouse)
         {
+            warehouse.UpdatedAt = DateTime.Now;
             _dbContext.Warehouses?.Update(warehouse);
             _dbContext.SaveChanges();
         }

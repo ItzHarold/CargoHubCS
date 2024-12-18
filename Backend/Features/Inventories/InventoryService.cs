@@ -38,12 +38,14 @@ namespace Backend.Features.Inventories
 
         public void AddInventory(Inventory inventory)
         {
+            inventory.CreatedAt = DateTime.Now;
             _dbContext.Inventories?.Add(inventory);
             _dbContext.SaveChanges();
         }
 
         public void UpdateInventory(Inventory inventory)
         {
+            inventory.UpdatedAt = DateTime.Now;
             _dbContext.Inventories?.Update(inventory);
             _dbContext.SaveChanges();
         }

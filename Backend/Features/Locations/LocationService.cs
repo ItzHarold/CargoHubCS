@@ -31,12 +31,14 @@ namespace Backend.Features.Locations
         }
         public void AddLocation(Location location)
         {
+            location.CreatedAt = DateTime.Now;
             _dbContext.Locations?.Add(location);
             _dbContext.SaveChanges();
         }
 
         public void UpdateLocation(Location location)
         {
+            location.UpdatedAt = DateTime.Now;
             _dbContext.Locations?.Update(location);
             _dbContext.SaveChanges();
         }

@@ -33,12 +33,14 @@ namespace Backend.Features.ItemLines
 
         public void AddItemLine(ItemLine itemLine)
         {
+            itemLine.CreatedAt = DateTime.Now;
             _dbContext.ItemLines?.Add(itemLine);
             _dbContext.SaveChanges();
         }
 
         public void UpdateItemLine(int id, ItemLine itemLine)
         {
+            itemLine.UpdatedAt = DateTime.Now;
             _dbContext.ItemLines?.Update(itemLine);
             _dbContext.SaveChanges();
         }

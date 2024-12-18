@@ -40,12 +40,14 @@ namespace Backend.Features.Clients
 
         public void AddClient(Client client)
         {
+            client.CreatedAt = DateTime.Now;
             _dbContext.Clients?.Add(client);
             _dbContext.SaveChanges();
         }
 
         public void UpdateClient(Client client)
         {
+            client.UpdatedAt = DateTime.Now;
             _dbContext.Clients?.Update(client);
             _dbContext.SaveChanges();
         }

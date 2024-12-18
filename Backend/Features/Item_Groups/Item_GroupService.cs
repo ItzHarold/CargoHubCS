@@ -39,12 +39,14 @@ namespace Backend.Features.ItemGroups
 
         public void AddItemGroup(ItemGroup itemGroup)
         {
+            itemGroup.CreatedAt = DateTime.Now;
             _dbContext.ItemGroups?.Add(itemGroup);
             _dbContext.SaveChanges();
         }
 
         public void UpdateItemGroup(ItemGroup itemGroup)
         {
+            itemGroup.UpdatedAt = DateTime.Now;
             _dbContext.ItemGroups?.Update(itemGroup);
             _dbContext.SaveChanges();
         }

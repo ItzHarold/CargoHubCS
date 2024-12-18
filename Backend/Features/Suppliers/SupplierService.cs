@@ -25,6 +25,7 @@ namespace Backend.Features.Suppliers
 
         public void AddSupplier(Supplier supplier)
         {
+            supplier.CreatedAt = DateTime.Now;
             _dbContext.Suppliers?.Add(supplier);
             _dbContext.SaveChanges();
         }
@@ -45,16 +46,9 @@ namespace Backend.Features.Suppliers
 
         public void UpdateSupplier(Supplier supplier)
         {
-            if (_dbContext.Suppliers != null)
-            {
-                var existingSupplier = _dbContext.Suppliers
-                    .FirstOrDefault(s => s.Id == supplier.Id);
-
-                if (existingSupplier != null)
-                {
-                    _dbContext.Entry(existingSupplier).CurrentValues.SetValues(supplier);
-                }
-            }
+            supplier.UpdatedAt = DateTime.Now;
+            _dbContext.Suppliers?.Update(supplier);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteSupplier(int id)

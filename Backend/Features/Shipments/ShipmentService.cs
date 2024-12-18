@@ -38,16 +38,15 @@ namespace Backend.Features.Shipments
         }
         public void AddShipment(Shipment shipment)
         {
+            shipment.CreatedAt = DateTime.Now;
             _dbContext.Shipments?.Add(shipment);
             _dbContext.SaveChanges();
         }
         public void UpdateShipment(Shipment shipment)
         {
-            if (_dbContext.Shipments != null)
-            {
-                _dbContext.Shipments.Update(shipment);
-                _dbContext.SaveChanges();
-            }
+            shipment.UpdatedAt = DateTime.Now;
+            _dbContext.Shipments?.Update(shipment);
+            _dbContext.SaveChanges();
         }
         public void DeleteShipment(int id)
         {

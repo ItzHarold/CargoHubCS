@@ -33,6 +33,7 @@ namespace Backend.Features.Transfers
 
         public void AddTransfer(Transfer transfer)
         {
+            transfer.CreatedAt = DateTime.Now;
             _dbContext.Transfers?.Add(transfer);
             _dbContext.SaveChanges();
         }
@@ -44,6 +45,7 @@ namespace Backend.Features.Transfers
 
         public void UpdateTransfer(Transfer transfer)
         {
+            transfer.UpdatedAt = DateTime.Now;
             _dbContext.Transfers?.Update(transfer);
             _dbContext.SaveChanges();
         }

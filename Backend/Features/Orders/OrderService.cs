@@ -24,6 +24,7 @@ namespace Backend.Features.Orders
         }
         public void AddOrder(Order order)
         {
+            order.CreatedAt = DateTime.Now;
             _dbContext.Orders?.Add(order);
             _dbContext.SaveChanges();
         }
@@ -42,6 +43,7 @@ namespace Backend.Features.Orders
         }
         public void UpdateOrder(Order order)
         {
+            order.UpdatedAt = DateTime.Now;
             _dbContext.Orders?.Update(order);
             _dbContext.SaveChanges();
         }

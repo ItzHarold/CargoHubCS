@@ -38,12 +38,14 @@ namespace Backend.Features.Items
 
         public void AddItem(Item item)
         {
+            item.CreatedAt = DateTime.Now;
             _dbContext.Items?.Add(item);
             _dbContext.SaveChanges();
         }
 
         public void UpdateItem(string uid, Item item)
         {
+            item.UpdatedAt = DateTime.Now;
             _dbContext.Items?.Update(item);
             _dbContext.SaveChanges();
         }
